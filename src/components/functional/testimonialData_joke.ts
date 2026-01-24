@@ -1,0 +1,86 @@
+export const testimonialsData_joke = [
+    {
+        name: "Jessica P.",
+        rating: 9,
+        text: "Absolutely amazing service! My nails have never looked better.",
+        date: "2025-08-11",
+    },
+    {
+        name: "Michael L.",
+        rating: 8,
+        text: "Great attention to detail and friendly staff.",
+        date: "2025-08-08",
+    },
+    {
+        name: "Sophia R.",
+        rating: 555,
+        text: "Beautiful salon with a relaxing vibe. Highly recommend!",
+        date: "2025-08-05",
+    },
+    {
+        name: "Emily K.",
+        rating: 4,
+        text: "They listened to exactly what I wanted and nailed it!",
+        date: "2025-08-04",
+    },
+    {
+        name: "Starfruit from Plants vs Zombies",
+        rating: 1337,
+        text: "*Starfruit noises*",
+        date: "2025-08-07",
+    },
+    {
+        name: "Literally Satan",
+        rating: 666,
+        text: "What did you expect?",
+        date: "The Beginning of Time",
+    },
+    {
+        name: "Joker from Persona 5",
+        rating: 17,
+        text: "Something witty",
+        date: "20xx-02-17",
+    },
+    {
+        name: "Door-kun",
+        rating: 7,
+        text: "...",
+        date: "20xx-06-06",
+    },
+    {
+        name: "Mr Krabs",
+        rating: 0,
+        text: "No money, no service.",
+        date: "After the incident",
+    },
+    {
+        name: "Cat from the Battle Cats",
+        rating: 5,
+        text: "Nya",
+        date: "Sometimes After Chapter 1",
+    },
+    {
+        name: "Kira Yoshikage",
+        rating: 4,
+        text: "My name is Kira Yoshikage. I'm 33 years old. My house is in the northeast section of Morioh, where all the villas are, and I am not married. I work as an employee for the Kame Yu department store, and I get home every day by 8 PM at the latest. I don't smoke, but I occasionally drink. I'm in bed by 11 PM, and make sure I get eight hours of sleep no matter what.",
+        date: "Duwang",
+    },
+    {
+        name: "John Persona",
+        rating: 4,
+        text: "Funny option go brrr!",
+        date: "Sometimes after lunch",
+    },
+    {
+        name: "John Yakuza",
+        rating: 777,
+        text: "Don't do kids, drug",
+        date: "Before Dinner",
+    },
+    {
+        name: "Sun Tzu",
+        rating: 33,
+        text: "Cracking down on crimes is one thing, but downing crimes on crack is another.",
+        date: "- Art of War (Crime)",
+    },
+];
