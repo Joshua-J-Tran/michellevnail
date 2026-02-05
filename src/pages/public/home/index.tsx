@@ -40,22 +40,22 @@ function HomePage() {
 
     const [lastTap, setLastTap] = useState<number>(0);
 
-    // tap logo 5× = ON, 10× = OFF, with a 1.2s reset window
+    // tap logo 5x = ON, 10x = OFF, with a 1.5s reset window
     const handleLogoTap = () => {
         const now = Date.now();
 
         setTapCount(prev => {
-            const withinWindow = now - lastTap <= 1500;   // 1.2s between taps counts toward the sequence
+            const withinWindow = now - lastTap <= 1500;   // 1.5s between taps counts toward the sequence
             const count = withinWindow ? prev + 1 : 1;    // reset if too slow
             setLastTap(now);
 
             if (!joke_mode && count === 5) {
-                setJokeMode(true);          // ✅ do NOT reset here so we can still reach 10
+                setJokeMode(true);          // do NOT reset here so we can still reach 10
                 return count;
             }
 
             if (joke_mode && count === 10) {
-                setJokeMode(false);         // ✅ turn off at 10, then reset
+                setJokeMode(false);         // turn off at 10, then reset
                 return 0;
             }
 
