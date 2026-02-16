@@ -17,7 +17,8 @@ function toGalleryItems(modules: GlobModules) {
       // Strip leading '.' or '/public' to get root-relative URL
       let url = path
         .replace(/^\./, '')           // remove leading . if present
-        .replace(/^\/public/, '');    // remove /public prefix
+        .replace(/^\/public/, '')    // remove /public prefix
+        .replace(/^\/src/, '');    // remove /public prefix
 
       // Ensure it starts with /
       if (!url.startsWith('/')) url = '/' + url;
