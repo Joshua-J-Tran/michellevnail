@@ -10,12 +10,18 @@ type WorkGallerySectionProps = {
 
 
 function toGalleryItems(modules: GlobModules) {
-  // modules is an object: { "/public/path/file.jpg": () => import(...) }
   return Object.keys(modules)
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
     .map((path) => {
-      // Vite returns URLs like "/images/gallery/nails/1.jpg"
-      const url = path.replace("/public", "/src");
+      // path is likely something like '/public/images/...jpg' or './public/...jpg'
+      // Strip leading '.' or '/public' to get root-relative URL
+      let url = path
+        .replace(/^\./, '')           // remove leading . if present
+        .replace(/^\/public/, '');    // remove /public prefix
+
+      // Ensure it starts with /
+      if (!url.startsWith('/')) url = '/' + url;
+
       return { original: url, thumbnail: url };
     });
 }

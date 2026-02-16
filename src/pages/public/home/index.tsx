@@ -94,10 +94,10 @@ function HomePage() {
                         <strong className="text-zinc-300">NAILS & SPA</strong>
                     </h1>
                     <p className="text-gray-700 text-sm sm:text-base font-semibold">
-                        <p className="text-black font-bold mt-2">
+                        <p className="text-white font-bold mt-2">
                         A First-class Luxury Exprience <br />
-                        <strong className="text-[#e6c36a]">From</strong> the Best <br />
-                        <strong className="text-[#e6c36a]">For</strong> the Best <br />
+                        <strong className="text-white">From</strong> the Best <br />
+                        <strong className="text-white">For</strong> the Best <br />
                         </p>
                     </p>
                     <Button className="w-max mx-auto lg:mx-0 mt-2 text-secondary bg-amber-100 hover:bg-amber-600 transition-colors font-bold">
