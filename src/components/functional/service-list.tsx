@@ -18,29 +18,41 @@ export default function ServiceList() {
 
     return (
         <div className="p-6 sm:p-10 flex flex-col items-center">
-            <h2 className="text-6xl font-bold mb-8 text-center">𓆰Our Services</h2>
-            <p className="text-secondary/90 mb-6 sm:mb-8 text-center text-xl sm:text-2xl max-w-2xl">
+            <h2 className="text-6xl font-bold mb-8 text-center text-white">
+  𓆰Our Services
+</h2>
+            <p className="text-secondary/90 mb-6 sm:mb-8 text-center text-xl sm:text-2xl max-w-2xl text-white">
                 Take a look at what we have to offer.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10 w-full max-w-7xl">
-                {services.map((service) => (
-                    <div
-                        key={service.name}
-                        onClick={() => setSelectedService(service)}
-                        className="cursor-pointer border border-amber-300 rounded-xl shadow-lg overflow-hidden bg-white/60 backdrop-blur-sm hover:shadow-2xl transition-all hover:scale-105 transition-transform duration-300"
-                    >
-                        <img
-                            src={service.image}
-                            alt={service.name}
-                            className="w-full h-64 object-cover"
-                        />
-                        <div className="p-4 text-center">
-                            <h1 className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-center py-2 font-bold text-l">{service.name}</h1>
-                        </div>
-                    </div>
-                ))}
-            </div>
+  {services.map((service) => (
+    <div
+      key={service.name}
+      onClick={() => setSelectedService(service)}
+      className={[
+        // Outer card: gradient border + padding for thickness
+        "relative cursor-pointer rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-2xl hover:scale-105 duration-300",
+        "bg-gradient-to-br from-gold via-gold-dark to-near-black p-[3px]",  // gold → black fade; adjust direction/thickness as needed
+      ].join(" ")}
+    >
+      {/* Inner content wrapper: covers gradient to make it look like a border */}
+      <div className="relative bg-near-black/95 rounded-[calc(0.75rem-3px)] overflow-hidden h-full flex flex-col">
+        <img
+          src={service.image}
+          alt={service.name}
+          className="w-full h-64 object-cover"
+        />
+        <div className="p-4 text-center relative">
+          {/* Name overlay – moved inside inner div for proper positioning */}
+          <h1 className=" text-white font-bold text-lg py-2 mt-2 rounded">
+            {service.name}
+          </h1>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
 
             {/* Crystal Modal */}
             {selectedService && (

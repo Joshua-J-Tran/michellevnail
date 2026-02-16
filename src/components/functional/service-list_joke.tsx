@@ -19,7 +19,7 @@ export default function ServiceList_joke() {
     return (
         <div className="p-6 sm:p-10 flex flex-col items-center">
             <h2 className="text-6xl font-bold mb-8 text-center">𓆰Our Services</h2>
-            <p className="text-secondary/90 mb-6 sm:mb-8 text-center text-xl sm:text-2xl max-w-2xl">
+            <p className="text-secondary/90 mb-6 sm:mb-8 text-center text-xl sm:text-2xl max-w-2xl text-white">
                 Take a look at what we have to offer.
             </p>
 

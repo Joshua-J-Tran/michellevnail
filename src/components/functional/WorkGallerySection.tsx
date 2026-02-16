@@ -48,33 +48,43 @@ export default function WorkGallerySection({
 
   return (
     <div className="p-6 sm:p-10 flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-3 sm:mb-4 text-center">Our Work Gallery</h2>
-      <p className="text-secondary/80 mb-6 text-center max-w-2xl">
+      <h2 className="text-3xl font-bold mb-3 sm:mb-4 text-center text-white">Our Work Gallery</h2>
+      <p className="text-secondary/80 mb-6 text-center max-w-2xl text-white">
         Browse by category. Click any image to view it larger!
       </p>
 
       {/* Category buttons */}
-      <div className="w-full max-w-4xl mb-6 flex flex-wrap justify-center gap-2">
-        {categories.map((cat) => {
-          const isActive = cat.id === activeId;
-          return (
-            <button
-              key={cat.id}
-              type="button"
-              onClick={() => setActiveId(cat.id)}
-              className={[
-                "px-4 py-2 rounded-full text-sm font-medium transition border",
-                isActive
-                  ? "bg-primary text-primary-foreground border-primary/40"
-                  : "bg-background/40 text-foreground border-border hover:bg-background/70",
-              ].join(" ")}
-              aria-pressed={isActive}
-            >
-              {cat.label}
-            </button>
-          );
-        })}
-      </div>
+<div className="w-full max-w-4xl mb-6 flex flex-wrap justify-center gap-2">
+  {categories.map((cat) => {
+    const isActive = cat.id === activeId;
+    return (
+      <button
+        key={cat.id}
+        type="button"
+        onClick={() => setActiveId(cat.id)}
+        className={[
+          // Base styles
+          "relative px-5 py-2.5 rounded-full text-sm font-medium transition-all",
+
+          // Gradient border effect (gold → black fade)
+          "bg-gradient-to-r from-gold via-gold-dark to-near-black p-[1.5px]",  // thin border thickness; adjust 1.5px → 2px or 3px for thicker
+
+          // Inner content background (dark to blend with page)
+          "after:content-[''] after:absolute after:inset-[1.5px] after:rounded-full after:bg-near-black/90 after:transition-all",  // inset matches p-[1.5px]
+
+          // Text & hover/active states
+          isActive
+            ? "text-gold after:bg-near-black shadow-[0_0_12px_rgba(212,175,55,0.4)]"  // active: brighter gold text + glow
+            : "text-white/80 hover:text-gold hover:shadow-[0_0_8px_rgba(212,175,55,0.3)]",
+        ].join(" ")}
+        aria-pressed={isActive}
+      >
+        {/* Inner span to position text above the pseudo-element */}
+        <span className="relative z-10">{cat.label}</span>
+      </button>
+    );
+  })}
+</div>
 
       <div className="w-full sm:max-w-[900px] md:max-w-[1200px] lg:max-w-[1400px]" onClick={handleLogoTap}>
         {active.images.length ? (
@@ -91,6 +101,7 @@ export default function WorkGallerySection({
                   style={{
                     width: "100%",
                     height: "auto",
+                    color: "red",
                     maxWidth: "clamp(300px, 85vw, 1400px)",
                     maxHeight: "clamp(400px, 80vh, 1200px)",
                     objectFit: "contain",
@@ -101,7 +112,7 @@ export default function WorkGallerySection({
             )}
           />
         ) : (
-          <div className="w-full rounded-xl border border-border p-10 text-center text-secondary/80">
+          <div className="w-full rounded-xl border border-border p-10 text-center text-secondary/80 text-white">
             No images in this category yet.
           </div>
         )}

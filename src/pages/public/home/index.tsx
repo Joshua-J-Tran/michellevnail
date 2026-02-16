@@ -21,7 +21,7 @@ function HomePage() {
     const [_tapCount, setTapCount] = useState(0);
 
     useEffect(() => {
-        const secret = ["j", "o", "k", "e"];
+        const secret = ["l", "m", "a", "e"];
         let buffer: string[] = [];
 
         const handler = (e: KeyboardEvent) => {
@@ -71,12 +71,12 @@ function HomePage() {
         <div className="flex flex-col text-secondary">
 
             {/* Navbar */}
-            <div className="flex flex-col sm:flex-row justify-between items-center px-6 sm:px-10 lg:px-20 py-6 gap-4 sm:gap-0">
+            <div className="flex flex-col sm:flex-row justify-between moontime-header items-center px-6 sm:px-10 lg:px-20 py-6 gap-4 sm:gap-0">
                 <h1 className="text-3xl font-bold text-center sm:text-left">
-                    <strong className="text-slate-300">TULIP </strong>
-                    <strong className="text-zinc-300">NAILS & SPA</strong>
+                    <strong className="text-slate-300">MICHELLEV </strong>
+                    <strong className="text-zinc-300">NAILS</strong>
                 </h1>
-                <Button variant="outline" className="bg-[#e6c36a] text-black font-semibold shadow-[0_0_10px_rgba(230,195,106,0.3)] hover:bg-[#ffdc7c] transition-all">
+                <Button variant="outline" className="bg-[#D4AF37] text-black font-semibold hover:bg-[#E6C36A] border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all">
                     <Link to="/register">Book Now!</Link>
                 </Button>
             </div>
@@ -90,11 +90,11 @@ function HomePage() {
                 {/* Left */}
                 <div className="flex flex-col gap-3 text-center lg:text-left">
                     <h1 className="text-5xl sm:text-6xl font-bold text-[#e6c36a] drop-shadow-[0_0_10px_rgba(230,195,106,0.3)]">
-                        Welcome to <strong className="text-slate-300">TULIP </strong>
+                        Welcome to <strong className="text-slate-300">MICHELLEV </strong>
                         <strong className="text-zinc-300">NAILS & SPA</strong>
                     </h1>
                     <p className="text-gray-700 text-sm sm:text-base font-semibold">
-                        <p className="text-fuchsia-500 font-bold mt-2">
+                        <p className="text-black font-bold mt-2">
                         A First-class Luxury Exprience <br />
                         <strong className="text-[#e6c36a]">From</strong> the Best <br />
                         <strong className="text-[#e6c36a]">For</strong> the Best <br />
@@ -159,28 +159,26 @@ function HomePage() {
                 <svg className="flex-1 h-12" viewBox="0 0 200 40" preserveAspectRatio="none">
                     <path d="M0 20 Q50 0 100 20 T200 20" fill="none" stroke="url(#gradientLeft)" strokeWidth="4" />
                     <defs>
-                        <linearGradient id="gradientLeft" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stopColor="#63d5f1ff" />
-                            <stop offset="50%" stopColor="#107bf7ff" />
-                            <stop offset="100%" stopColor="#1507e0ff" />
-                        </linearGradient>
+                        <linearGradient id="gradientLeft">
+    <stop offset="0%" stopColor="#D4AF37" />
+    <stop offset="100%" stopColor="#111111" />
+</linearGradient>
                     </defs>
                 </svg>
 
                 <img
-                    src="/images/logo-a.png"
-                    alt="Salon Logo"
-                    className="h-32 sm:h-20 mx-4 sm:mx-8 rounded-full shadow-lg"
-                />
+  src="/images/logo-a.png"
+  alt="Salon Logo"
+  className="h-64 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
+/>
 
                 <svg className="flex-1 h-12" viewBox="0 0 200 40" preserveAspectRatio="none">
                     <path d="M0 20 Q50 40 100 20 T200 20" fill="none" stroke="url(#gradientRight)" strokeWidth="4" />
                     <defs>
-                        <linearGradient id="gradientRight" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stopColor="#1507e0ff" />
-                            <stop offset="50%" stopColor="#107bf7ff" />
-                            <stop offset="100%" stopColor="#63d5f1ff" />
-                        </linearGradient>
+                        <linearGradient id="gradientRight">
+    <stop offset="0%" stopColor="#D4AF37" />
+    <stop offset="100%" stopColor="#111111" />
+</linearGradient>
                     </defs>
                 </svg>
             </div>
@@ -248,28 +246,26 @@ function HomePage() {
                 <svg className="flex-1 h-12" viewBox="0 0 200 40" preserveAspectRatio="none">
                     <path d="M0 20 Q50 0 100 20 T200 20" fill="none" stroke="url(#gradientLeft-2)" strokeWidth="4" />
                     <defs>
-                        <linearGradient id="gradientLeft-2" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stopColor="#f163b6ff" />
-                            <stop offset="50%" stopColor="#f710aaff" />
-                            <stop offset="100%" stopColor="#b507e0ff" />
-                        </linearGradient>
+                        <linearGradient id="gradientLeft-2">
+    <stop offset="0%" stopColor="#D4AF37" />
+    <stop offset="100%" stopColor="#111111" />
+</linearGradient>
                     </defs>
                 </svg>
 
                 <img
-                    src="/images/logo-a.png"
-                    alt="Salon Logo"
-                    className="h-32 sm:h-20 mx-4 sm:mx-8 rounded-full shadow-lg"
-                />
+  src="/images/logo-a.png"
+  alt="Salon Logo"
+  className="h-64 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
+/>
 
                 <svg className="flex-1 h-12" viewBox="0 0 200 40" preserveAspectRatio="none">
                     <path d="M0 20 Q50 40 100 20 T200 20" fill="none" stroke="url(#gradientRight-2)" strokeWidth="4" />
                     <defs>
-                        <linearGradient id="gradientRight-2" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stopColor="#b507e0ff" />
-                            <stop offset="50%" stopColor="#f710aaff" />
-                            <stop offset="100%" stopColor="#f163b6ff" />
-                        </linearGradient>
+                        <linearGradient id="gradientRight-2">
+    <stop offset="0%" stopColor="#D4AF37" />
+    <stop offset="100%" stopColor="#111111" />
+</linearGradient>
                     </defs>
                 </svg>
             </div>
@@ -277,8 +273,8 @@ function HomePage() {
 
             {/* What People Say Section */}
             <div className="p-6 sm:p-10 flex flex-col items-center">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center text-fuchsia-700">We Appreciate You!</h2>
-                <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-center font-semibold">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center text-white">We Appreciate You!</h2>
+                <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-center font-semibold text-white">
                     Here is what our customers say about us.
                 </p>
                 {(!joke_mode) && <TestimonialCarousel />}
@@ -295,10 +291,10 @@ function HomePage() {
                     {/* Contact Info */}
                     <div>
                         <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-                        <p>RICH-NAILS Salon & Spa</p>
-                        <p>3140 East Fort Lowell Street, Tucson, AZ 85716</p>
-                        <p>Phone: (520) 203-7700</p>
-                        <p>Email: info@richnails.com</p>
+                        <p>MICHELLEV NAIL</p>
+                        <p>4645 Hwy 6 A, Sugar Land, TX 77478</p>
+                        <p>Phone: (713) 282-1475</p>
+                        <p>Email: michellevnails@gmail.com</p>
                     </div>
 
                     {/* Operating Hours */}
@@ -311,11 +307,12 @@ function HomePage() {
                         </ul>
                     </div>
 
+                    
                     {/* Website Info */}
                     <div>
                         <h3 className="text-xl font-bold mb-4">Website-related Contacts</h3>
-                        <p>Taivas WD</p>
-                        <p>Email: taivaswd@gmail.com</p>
+                        <p>Josh</p>
+                        <p>Email: joshtran2018@gmail.com</p>
                     </div>
 
                     {/* Social Media */}
@@ -331,7 +328,7 @@ function HomePage() {
 
                 {/* Copyright */}
                 <div className="mt-8 text-center text-gray-400 text-sm">
-                    © {new Date().getFullYear()} Crystal Nails & Spa. All rights reserved.
+                    © {new Date().getFullYear()} Michellev Crystal Nails. All rights reserved.
                 </div>
             </div>
 

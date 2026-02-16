@@ -35,7 +35,7 @@ export const services = [
             { name: "Herbal Spa (Must Try!)", price: "$85" },
         ],
     },
-
+ /*
     {
         
         name: "Waxing",
@@ -78,4 +78,5 @@ export const services = [
             { name: "Chrome Nail Powder", price: "$12" },
         ],
     },
+    */
 ];

@@ -84,7 +84,7 @@ function ReviewText({ text, maxLength = 75 }: { text: string; maxLength?: number
     <p className="text-lg italic text-gray-700 mb-4">
       "{expanded ? text : `${text.slice(0, maxLength)}...`}"
       <button
-        className="ml-2 text-fuchsia-500 font-semibold"
+        className="ml-2 text-black font-semibold"
         onClick={() => setExpanded((prev) => !prev)}
       >
         {expanded ? "Read less" : "Read more"}
@@ -151,7 +151,7 @@ export default function TestimonialCarousel_Joke() {
                 <StarRating count={t.rating} />
                 <ReviewText text={t.text} />
                 <p className="font-semibold text-secondary">– {t.name}</p>
-                <p className="font-semibold text-fuchsia-600 italic">
+                <p className="font-semibold text-black italic">
                   📅 {t.date}
                 </p>
               </div>
@@ -166,7 +166,7 @@ export default function TestimonialCarousel_Joke() {
             key={i}
             onClick={() => setIndex(i)}
             className={`h-3 w-3 rounded-full ${
-              i === index ? "bg-fuchsia-500" : "bg-gray-300"
+              i === index ? "bg-black" : "bg-gray-300"
             }`}
           />
         ))}
