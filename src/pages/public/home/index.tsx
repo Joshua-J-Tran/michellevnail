@@ -328,7 +328,7 @@ function HomePage() {
 
                 {/* Copyright */}
                 <div className="mt-8 text-center text-gray-400 text-sm">
-                    © {new Date().getFullYear()} Michellev Crystal Nails. All rights reserved.
+                    © {new Date().getFullYear()} Michellev Nails. All rights reserved.
                 </div>
             </div>
 
