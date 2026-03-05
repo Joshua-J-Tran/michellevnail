@@ -77,7 +77,7 @@ function HomePage() {
                     <strong className="text-zinc-300">NAILS</strong>
                 </h1>
                 <Button variant="outline" className="bg-[#D4AF37] text-black font-semibold hover:bg-[#E6C36A] border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all">
-                    <Link to="/register">Book Now!</Link>
+                    <Link to="https://michellevnails8634.simplepos.us/">Book Now!</Link>
                 </Button>
             </div>
 
@@ -101,7 +101,7 @@ function HomePage() {
                         </p>
                     </p>
                     <Button className="w-max mx-auto lg:mx-0 mt-2 text-secondary bg-amber-100 hover:bg-amber-600 transition-colors font-bold">
-                        <Link to="/register">Start Booking Today!</Link>
+                        <Link to="https://michellevnails8634.simplepos.us/">Start Booking Today!</Link>
                     </Button>
                 </div>
 
@@ -307,20 +307,12 @@ function HomePage() {
                         </ul>
                     </div>
 
-                    
-                    {/* Website Info */}
-                    <div>
-                        <h3 className="text-xl font-bold mb-4">Website-related Contacts</h3>
-                        <p>Josh</p>
-                        <p>Email: joshtran2018@gmail.com</p>
-                    </div>
-
                     {/* Social Media */}
                     <div>
                         <h3 className="text-xl font-bold mb-4">Follow Us</h3>
                         {SocialLinks()}
                         <Button variant="outline" className="text-secondary font-bold mt-6 w-full sm:w-auto">
-                            <Link to="/register">Book Now!</Link>
+                            <Link to="https://michellevnails8634.simplepos.us/">Book Now!</Link>
                         </Button>
                     </div>
 

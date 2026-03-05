@@ -128,7 +128,7 @@ function LoginPage() {
                             <div className="flex justify-between items-center">
                             <h1 className="flex gap-5 text-sm text-black-100 items-center font-semibold">
                                 Don't have an appointment?{" "}
-                                <Link to="/register" className="text-primary-500 underline">
+                                <Link to="https://michellevnails8634.simplepos.us/" className="text-primary-500 underline">
                                     Start Here!
                                 </Link>
                             </h1>

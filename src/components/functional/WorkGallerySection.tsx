@@ -31,15 +31,17 @@ export default function WorkGallerySection({
   handleLogoTap,
 }: WorkGallerySectionProps)  {
   // Auto-load each folder
-  const nailsMods = import.meta.glob("/src/images/gallery/nails/*.{jpg,jpeg,png,webp}", { eager: true });
-  const interiorMods = import.meta.glob("/src/images/gallery/interior/*.{jpg,jpeg,png,webp}", { eager: true });
-  const massageMods = import.meta.glob("/src/images/gallery/massage/*.{jpg,jpeg,png,webp}", { eager: true });
-  const salonMods = import.meta.glob("/src/images/gallery/salon/*.{jpg,jpeg,png,webp}", { eager: true });
-  const customerMods = import.meta.glob("/src/images/gallery/customer/*.{jpg,jpeg,png,webp}", { eager: true });
-  const drinksMods = import.meta.glob("/src/images/gallery/drinks/*.{jpg,jpeg,png,webp}", { eager: true });
+  const nailsMods = import.meta.glob("/public/images/gallery/nails/*.{jpg,jpeg,png,webp}", { eager: true });
+  const interiorMods = import.meta.glob("/public/images/gallery/interior/*.{jpg,jpeg,png,webp}", { eager: true });
+  const massageMods = import.meta.glob("/public/images/gallery/massage/*.{jpg,jpeg,png,webp}", { eager: true });
+  const salonMods = import.meta.glob("/public/images/gallery/salon/*.{jpg,jpeg,png,webp}", { eager: true });
+  const customerMods = import.meta.glob("/public/images/gallery/customer/*.{jpg,jpeg,png,webp}", { eager: true });
+  const drinksMods = import.meta.glob("/public/images/gallery/drinks/*.{jpg,jpeg,png,webp}", { eager: true });
+  const menuMods = import.meta.glob("/public/images/gallery/menu/*.{jpg,jpeg,png,webp}", { eager: true });
 
   const categories = useMemo(
     () => [
+      { id: "menus", label: "Menu", images: toGalleryItems(menuMods) },
       { id: "nails", label: "Nails", images: toGalleryItems(nailsMods) },
       { id: "interior", label: "Interior", images: toGalleryItems(interiorMods) },
       { id: "massage", label: "Massage", images: toGalleryItems(massageMods) },
