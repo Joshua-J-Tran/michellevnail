@@ -1,15 +1,15 @@
 export const testimonialsData = [
     {
-        name: "Jessica P.",
+        name: "Rachel P.",
         rating: 5,
-        text: "Absolutely amazing service! My nails have never looked better.",
-        date: "2025-08-11",
+        text: "Michelle is truly the best. I came to Michelle after years of going to a regular nail salon and let me tell you….it was SO worth it.",
+        date: "2025-11-09",
     },
     {
-        name: "Michael L.",
-        rating: 4,
-        text: "Great attention to detail and friendly staff.",
-        date: "2025-08-08",
+        name: "Christian L.",
+        rating: 5,
+        text: "Two weeks out and a vacation in the books, my nails look like they were just done! Will definitely be back!!",
+        date: "2025-11-12",
     },
     {
         name: "Sophia R.",
@@ -18,15 +18,15 @@ export const testimonialsData = [
         date: "2025-08-05",
     },
     {
-        name: "Emily K.",
-        rating: 4,
-        text: "They listened to exactly what I wanted and nailed it!",
-        date: "2025-08-04",
+        name: "Freya W.",
+        rating: 5,
+        text: "Love my nails from Michelle! She is very meticulous to make sure your nails are perfect.",
+        date: "2025-05-04",
     },
     {
-        name: "Jordan P.",
-        rating: 4,
-        text: "Best pedicure I've ever had! The staff was so attentive.",
-        date: "2025-08-14",
+        name: "Gita A.",
+        rating: 5,
+        text: "I went to Michelle for the first time today and she is excellent! Her vibe is so motherly, I feel safe and comfortable in her studio.",
+        date: "2025-03-06",
     },
 ];
