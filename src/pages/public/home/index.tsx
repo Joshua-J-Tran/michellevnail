@@ -222,7 +222,7 @@ function HomePage() {
                 </div>
             </div>
             */}
-
+            {ServiceList()}
 
             {/* Curvy Stylish Divider with Logo */}
             <div className="flex items-center mt-4 w-full max-w-[1400px] mx-auto px-4 sm:px-0">
@@ -256,10 +256,11 @@ function HomePage() {
 
             {/* What People Say Section */}
             <div className="p-6 sm:p-10 flex flex-col items-center">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center text-white">We Appreciate You!</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center text-white">Nails & Spa Experience</h2>
                 <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-center font-semibold text-white">
                     Here is what our customers say about us.
                 </p>
+                {<TestimonialCarousel />}
             </div>
 
 
