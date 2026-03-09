@@ -31,23 +31,27 @@ export default function WorkGallerySection({
   handleLogoTap,
 }: WorkGallerySectionProps)  {
   // Auto-load each folder
-  const nailsMods = import.meta.glob("/public/images/gallery/nails/*.{jpg,jpeg,png,webp}", { eager: true });
+  const manicureMods = import.meta.glob("/public/images/gallery/manicure/*.{jpg,jpeg,png,webp}", { eager: true });
   const interiorMods = import.meta.glob("/public/images/gallery/interior/*.{jpg,jpeg,png,webp}", { eager: true });
-  const massageMods = import.meta.glob("/public/images/gallery/massage/*.{jpg,jpeg,png,webp}", { eager: true });
-  const salonMods = import.meta.glob("/public/images/gallery/salon/*.{jpg,jpeg,png,webp}", { eager: true });
-  const customerMods = import.meta.glob("/public/images/gallery/customer/*.{jpg,jpeg,png,webp}", { eager: true });
+  const pedicureMods = import.meta.glob("/public/images/gallery/pedicure/*.{jpg,jpeg,png,webp}", { eager: true });
+  const specialMods = import.meta.glob("/public/images/gallery/special/*.{jpg,jpeg,png,webp}", { eager: true });
+  const lashMods = import.meta.glob("/public/images/gallery/lash/*.{jpg,jpeg,png,webp}", { eager: true });
   const drinksMods = import.meta.glob("/public/images/gallery/drinks/*.{jpg,jpeg,png,webp}", { eager: true });
   const menuMods = import.meta.glob("/public/images/gallery/menu/*.{jpg,jpeg,png,webp}", { eager: true });
+  const artMods = import.meta.glob("/public/images/gallery/art/*.{jpg,jpeg,png,webp}", { eager: true });
+  const customerMods = import.meta.glob("/public/images/gallery/customer/*.{jpg,jpeg,png,webp}", { eager: true });
 
   const categories = useMemo(
     () => [
       { id: "menus", label: "Menu", images: toGalleryItems(menuMods) },
-      { id: "nails", label: "Nails", images: toGalleryItems(nailsMods) },
+      { id: "special", label: "Special of the month", images: toGalleryItems(specialMods) },
+      { id: "manicure", label: "Manicure", images: toGalleryItems(manicureMods) },
+      { id: "pedicure", label: "Pedicure", images: toGalleryItems(pedicureMods) },
+      { id: "art", label: "Nail Arts", images: toGalleryItems(artMods) },
+      { id: "lash", label: "Lash & Beauty", images: toGalleryItems(lashMods) },
       { id: "interior", label: "Interior", images: toGalleryItems(interiorMods) },
-      { id: "massage", label: "Massage", images: toGalleryItems(massageMods) },
-      { id: "salon", label: "Salon", images: toGalleryItems(salonMods) },
-      { id: "customer", label: "Customer", images: toGalleryItems(customerMods) },
-      { id: "drinks", label: "Drinks", images: toGalleryItems(drinksMods) },
+      { id: "customer", label: "Customer Experiences", images: toGalleryItems(customerMods) },
+      { id: "drinks", label: "Complimentary Beverages", images: toGalleryItems(drinksMods) },
     ],
     []
   );

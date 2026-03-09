@@ -8,8 +8,6 @@ import WorkGallerySection from '@/components/functional/WorkGallerySection';
 import SocialLinks from "@/components/functional/socials"
 import ServiceList from '@/components/functional/service-list';
 import TestimonialCarousel from '@/components/functional/TestimonialCarousel';
-import TestimonialCarousel_Joke from '@/components/functional/TestimonialCarousel_joke';
-import ServiceList_joke from '@/components/functional/service-list_joke';
 import { useEffect, useState } from "react";
 
 
@@ -17,7 +15,6 @@ function HomePage() {
     // const images = getGalleryImages();
 
 
-    const [joke_mode, setJokeMode] = useState(false);
     const [_tapCount, setTapCount] = useState(0);
 
     useEffect(() => {
@@ -27,9 +24,7 @@ function HomePage() {
         const handler = (e: KeyboardEvent) => {
             buffer.push(e.key.toLowerCase());
             buffer = buffer.slice(-secret.length); // keep last few keys
-            if (buffer.join("") === secret.join("")) {
-                setJokeMode(true);
-            }
+
         };
 
         window.addEventListener("keydown", handler);
@@ -49,16 +44,6 @@ function HomePage() {
             const count = withinWindow ? prev + 1 : 1;    // reset if too slow
             setLastTap(now);
 
-            if (!joke_mode && count === 5) {
-                setJokeMode(true);          // do NOT reset here so we can still reach 10
-                return count;
-            }
-
-            if (joke_mode && count === 10) {
-                setJokeMode(false);         // turn off at 10, then reset
-                return 0;
-            }
-
             // keep counting, but avoid runaway growth
             return count > 10 ? 1 : count;
         });
@@ -73,7 +58,7 @@ function HomePage() {
             {/* Navbar */}
             <div className="flex flex-col sm:flex-row justify-between moontime-header items-center px-6 sm:px-10 lg:px-20 py-6 gap-4 sm:gap-0">
                 <h1 className="text-3xl font-bold text-center sm:text-left">
-                    <strong className="text-slate-300">MICHELLEV </strong>
+                    <strong className="text-slate-300">MICHELLE V </strong>
                     <strong className="text-zinc-300">NAILS</strong>
                 </h1>
                 <Button variant="outline" className="bg-[#D4AF37] text-black font-semibold hover:bg-[#E6C36A] border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all">
@@ -90,12 +75,12 @@ function HomePage() {
                 {/* Left */}
                 <div className="flex flex-col gap-3 text-center lg:text-left">
                     <h1 className="text-5xl sm:text-6xl font-bold text-[#e6c36a] drop-shadow-[0_0_10px_rgba(230,195,106,0.3)]">
-                        Welcome to <strong className="text-slate-300">MICHELLEV </strong>
+                        Welcome to <strong className="text-slate-300">MICHELLE V </strong>
                         <strong className="text-zinc-300">NAILS & SPA</strong>
                     </h1>
                     <p className="text-gray-700 text-sm sm:text-base font-semibold">
                         <p className="text-white font-bold mt-2">
-                        A First-class Luxury Exprience <br />
+                        Nails & Spa Exprience <br />
                         <strong className="text-white">From</strong> the Best <br />
                         <strong className="text-white">For</strong> the Best <br />
                         </p>
@@ -238,8 +223,6 @@ function HomePage() {
             </div>
             */}
 
-            {(!joke_mode) && ServiceList()}
-            {(joke_mode) && ServiceList_joke()}
 
             {/* Curvy Stylish Divider with Logo */}
             <div className="flex items-center mt-4 w-full max-w-[1400px] mx-auto px-4 sm:px-0">
@@ -277,8 +260,6 @@ function HomePage() {
                 <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-center font-semibold text-white">
                     Here is what our customers say about us.
                 </p>
-                {(!joke_mode) && <TestimonialCarousel />}
-                {(joke_mode) && <TestimonialCarousel_Joke />}
             </div>
 
 
@@ -291,7 +272,7 @@ function HomePage() {
                     {/* Contact Info */}
                     <div>
                         <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-                        <p>MICHELLEV NAIL</p>
+                        <p>MICHELLE V NAIL</p>
                         <p>4645 Hwy 6 A, Sugar Land, TX 77478</p>
                         <p>Phone: (713) 282-1475</p>
                         <p>Email: michellevnails@gmail.com</p>
@@ -320,7 +301,7 @@ function HomePage() {
 
                 {/* Copyright */}
                 <div className="mt-8 text-center text-gray-400 text-sm">
-                    © {new Date().getFullYear()} Michellev Nails. All rights reserved.
+                    © {new Date().getFullYear()} Michelle V Nails. All rights reserved.
                 </div>
             </div>
 
