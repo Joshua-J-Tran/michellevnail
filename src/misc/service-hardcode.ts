@@ -47,7 +47,7 @@ export const services = [
     },
     {
         name: "Gel Builder / BIAB / GELX",
-        image: "/images/gel-builder.jpg",
+        image: "/images/gel-builder.jpeg",
         options: [
             { name: "Gel Builder Full Set", price: "$58+" },
             { name: "Gel Builder Refill", price: "$45+" },
