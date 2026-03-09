@@ -47,7 +47,7 @@ export const services = [
     },
     {
         name: "Gel Builder / BIAB / GELX",
-        image: "/images/gel-builder.jpeg",
+        image: "/images/gel-builder.png",
         options: [
             { name: "Gel Builder Full Set", price: "$58+" },
             { name: "Gel Builder Refill", price: "$45+" },
@@ -90,7 +90,7 @@ export const services = [
     },
     {
         name: "Little Princess (12 & Under)",
-        image: "/images/kids-nails.jpg",
+        image: "/images/kid-nails.png",
         options: [
             { name: "Polish Hands", price: "$10" },
             { name: "Polish Feet", price: "$12" },
