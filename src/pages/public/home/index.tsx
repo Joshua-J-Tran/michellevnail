@@ -74,17 +74,13 @@ function HomePage() {
             >
                 {/* Left */}
                 <div className="flex flex-col gap-3 text-center lg:text-left">
-                    <h1 className="text-5xl sm:text-6xl font-bold text-[#e6c36a] drop-shadow-[0_0_10px_rgba(230,195,106,0.3)]">
-                        Welcome to <strong className="text-slate-300">MICHELLE V </strong>
-                        <strong className="text-zinc-300">NAILS & SPA</strong>
-                    </h1>
-                    <p className="text-gray-700 text-sm sm:text-base font-semibold">
-                        <p className="text-white font-bold mt-2">
-                        Nails & Spa Exprience <br />
-                        <strong className="text-white">From</strong> the Best <br />
-                        <strong className="text-white">For</strong> the Best <br />
-                        </p>
-                    </p>
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#e6c36a] drop-shadow-[0_0_10px_rgba(230,195,106,0.3)]">
+  Welcome to <strong className="text-slate-300">MICHELLE V</strong> <strong className="text-zinc-300">NAILS</strong>
+</h1>
+
+<p className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide">
+  Nails & Spa Experience<br />
+</p>
                     <Button className="w-max mx-auto lg:mx-0 mt-2 text-secondary bg-amber-100 hover:bg-amber-600 transition-colors font-bold">
                         <Link to="https://michellevnails8634.simplepos.us/">Start Booking Today!</Link>
                     </Button>
