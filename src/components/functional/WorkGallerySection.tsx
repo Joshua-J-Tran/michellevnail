@@ -40,6 +40,7 @@ export default function WorkGallerySection({
   const menuMods = import.meta.glob("/public/images/gallery/menu/*.{jpg,jpeg,png,webp}", { eager: true });
   const artMods = import.meta.glob("/public/images/gallery/art/*.{jpg,jpeg,png,webp}", { eager: true });
   const customerMods = import.meta.glob("/public/images/gallery/customer/*.{jpg,jpeg,png,webp}", { eager: true });
+  const littleMods = import.meta.glob("/public/images/gallery/little/*.{jpg,jpeg,png,webp}", { eager: true });
 
   const categories = useMemo(
     () => [
@@ -51,7 +52,8 @@ export default function WorkGallerySection({
       { id: "lash", label: "Lash & Beauty", images: toGalleryItems(lashMods) },
       { id: "interior", label: "Interior", images: toGalleryItems(interiorMods) },
       { id: "customer", label: "Customer Experiences", images: toGalleryItems(customerMods) },
-      { id: "drinks", label: "Complimentary Beverages", images: toGalleryItems(drinksMods) },
+      { id: "drinks", label: "Complimentary Beverages", images: toGalleryItems(drinksMods) }, 
+      { id: "little", label: "Little Princess", images: toGalleryItems(littleMods) },
     ],
     []
   );
