@@ -1,107 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
-
-
-
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(16.842% 0.00002 271.152);
-  --foreground: oklch(84.307% 0.17822 104.321);
-  --card: oklch(62.793% 0.25768 29.223);
-  --card-foreground: oklch(0.1450 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.1450 0 0);
-  --primary: #6F7B74;
-  --primary-foreground: oklch(63.914% 0.26364 353.5);
-  --secondary: #2E2E2E;
-  --secondary-foreground: oklch(45.457% 0.31135 265.276);
-  --muted: oklch(0.9700 0 0);
-  --muted-foreground: oklch(0.5560 0 0);
-  --accent: oklch(77.738% 0.12341 218.305);
-  --accent-foreground: oklch(0.2050 0 0);
-  --destructive: oklch(0.5770 0.2450 27.3250);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.6439 0.1127 186.3897);
-  --input: oklch(0.9220 0 0);
-  --ring: oklch(0.7080 0 0);
-  --chart-1: oklch(0.8100 0.1000 252);
-  --chart-2: oklch(0.6200 0.1900 260);
-  --chart-3: oklch(0.5500 0.2200 263);
-  --chart-4: oklch(0.4900 0.2200 264);
-  --chart-5: oklch(0.4200 0.1800 266);
-  --sidebar: oklch(0.9850 0 0);
-  --sidebar-foreground: oklch(0.1450 0 0);
-  --sidebar-primary: oklch(0.2050 0 0);
-  --sidebar-primary-foreground: oklch(0.9850 0 0);
-  --sidebar-accent: oklch(0.9700 0 0);
-  --sidebar-accent-foreground: oklch(0.2050 0 0);
-  --sidebar-border: oklch(0.9220 0 0);
-  --sidebar-ring: oklch(0.7080 0 0);
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Core palette – easy to swap later */
+  --primary: #ff7782; /* Blush Pink – main buttons, highlights, calls-to-action */
+  --primary-foreground: #ffffff; /* White text on primary (good contrast) */
+
+  --secondary: #36454f; /* Charcoal – dark accents, nav, footers */
+  --secondary-foreground: #ffffff; /* White text on secondary */
+
+  --accent: #f7e6ca; /* Champagne Gold – luxurious highlights, icons, borders */
+  --accent-foreground: #36454f; /* Charcoal text on accent for readability */
+
+  --highlight: #f7e6ca; /* Alias for accent if you prefer "highlight" */
+
+  --background: #fdf4dc; /* Warm White – main page background (creamy, soft) */
+  --foreground: #36454f; /* Charcoal – default body text */
+
+  --muted: #e0d9d1; /* Soft warm gray (derived from warm white + charcoal) */
+  --muted-foreground: #6b7280; /* Medium gray for secondary text */
+
+  --border: #d4c5ae; /* Subtle champagne-gold-ish border (or use #E0D9D1) */
+  --input: #ffffff; /* Form inputs bg */
+  --ring: #ff7782; /* Focus rings – blush */
+
+  /* Keep your existing fonts, radius, shadows, etc. */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
   --radius: 0.8rem;
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-  --tracking-normal: 0.1em;
-  --spacing: 0.25rem;
 }
 
+/* Optional: Dark mode variant (softer dark for elegance, not pure black) */
 .dark {
-  --background: oklch(0.1450 0 0);
-  --foreground: oklch(0.9850 0 0);
-  --card: oklch(0.2050 0 0);
-  --card-foreground: oklch(0.9850 0 0);
-  --popover: oklch(0.2690 0 0);
-  --popover-foreground: oklch(0.9850 0 0);
-  --primary: oklch(0.9220 0 0);
-  --primary-foreground: oklch(0.2050 0 0);
-  --secondary: oklch(0.2690 0 0);
-  --secondary-foreground: oklch(0.9850 0 0);
-  --muted: oklch(0.2690 0 0);
-  --muted-foreground: oklch(0.7080 0 0);
-  --accent: oklch(0.3710 0 0);
-  --accent-foreground: oklch(0.9850 0 0);
-  --destructive: oklch(0.7040 0.1910 22.2160);
-  --destructive-foreground: oklch(0.9850 0 0);
-  --border: oklch(0.2750 0 0);
-  --input: oklch(0.3250 0 0);
-  --ring: oklch(0.5560 0 0);
-  --chart-1: oklch(0.8100 0.1000 252);
-  --chart-2: oklch(0.6200 0.1900 260);
-  --chart-3: oklch(0.5500 0.2200 263);
-  --chart-4: oklch(0.4900 0.2200 264);
-  --chart-5: oklch(0.4200 0.1800 266);
-  --sidebar: oklch(0.2050 0 0);
-  --sidebar-foreground: oklch(0.9850 0 0);
-  --sidebar-primary: oklch(0.4880 0.2430 264.3760);
-  --sidebar-primary-foreground: oklch(0.9850 0 0);
-  --sidebar-accent: oklch(0.2690 0 0);
-  --sidebar-accent-foreground: oklch(0.9850 0 0);
-  --sidebar-border: oklch(0.2750 0 0);
-  --sidebar-ring: oklch(0.4390 0 0);
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --radius: 0.8rem;
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  --primary: #ff7782; /* Keep blush vibrant */
+  --primary-foreground: #ffffff;
+
+  --secondary: #2f3e47; /* Slightly lighter charcoal for dark mode */
+  --secondary-foreground: #f5f5f5;
+
+  --accent: #faeec8; /* Brighter champagne in dark mode */
+  --accent-foreground: #2f3e47;
+
+  --background: #1e2528; /* Deep charcoal-gray bg (not pure black) */
+  --foreground: #f0f0f0; /* Off-white text */
+
+  --muted: #4b5e67;
+  --muted-foreground: #a0aec0;
+
+  --border: #4b5e67;
+  --input: #2f3e47;
+  --ring: #ff7782;
 }
 
 @theme {
@@ -111,13 +63,13 @@
   --color-darkest: #111111;
 
   /* Gold palette – rich & luxurious */
-  --color-gold: #d4af37;          /* Main gold for headings, accents, buttons */
-  --color-gold-dark: #b08d57;     /* Deeper bronze for hovers/shadows */
-  --color-gold-light: #f5e6c8;    /* Subtle champagne highlights */
-  --color-gold-glow: #e6c36a;     /* Warmer variant if you want to keep some of your old amber feel */
+  --color-gold: #d4af37; /* Main gold for headings, accents, buttons */
+  --color-gold-dark: #b08d57; /* Deeper bronze for hovers/shadows */
+  --color-gold-light: #f5e6c8; /* Subtle champagne highlights */
+  --color-gold-glow: #e6c36a; /* Warmer variant if you want to keep some of your old amber feel */
 
   /* Text on dark backgrounds */
-  --color-text-primary: #f5f5f5;  /* Off-white body text */
+  --color-text-primary: #f5f5f5; /* Off-white body text */
   --color-text-secondary: #e0e0e0;
   --color-text-muted: #a0a0a0;
 }
@@ -133,11 +85,17 @@
   position: relative;
   border-radius: 12px; /* or rounded-xl / rounded-2xl */
   overflow: hidden; /* clips inner content if needed */
-  background: linear-gradient(to right, var(--color-gold), var(--color-gold-dark), var(--color-near-black)); /* gold fade to black */
+  background: linear-gradient(
+    to right,
+    var(--color-gold),
+    var(--color-gold-dark),
+    var(--color-near-black)
+  ); /* gold fade to black */
   padding: 3px; /* border thickness – adjust 2px–5px */
 }
 
-.gallery-wrapper > * { /* or use ::after if you prefer pseudo */
+.gallery-wrapper > * {
+  /* or use ::after if you prefer pseudo */
   position: relative;
   z-index: 1;
   background: var(--color-near-black); /* or /90 for slight transparency */
@@ -166,54 +124,43 @@ body {
   letter-spacing: var(--tracking-normal);
 }
 
-
-
-
-*{
+* {
   box-sizing: border-box;
   font-family: "Inter", sans-serif !important;
 }
 
-
-table{
+table {
   border: 2px solid #9e9e9eda !important;
 }
 
+/* ────────────────────────────────────────────────
+   Global body & root styling
+───────────────────────────────────────────────── */
 
 body {
-  background: 
-    /* Subtle gold tint overlay for warmth */
-    linear-gradient(
-      rgba(212, 55, 55, 0.06),    /* very light gold overlay */
-      rgba(15, 15, 15, 0.4)        /* darkens the base */
-    ),
-    /* Main background image with sparkle */
-    url('/michellevnail/public/bg/gold-sparkle-black.jpg');   /* ← change to your chosen filename */
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;        /* keeps it parallax-like when scrolling */
-
-  color: #000000;                      /* ensure default text is visible */
-  min-height: 100vh;
   margin: 0;
+  min-height: 100vh;
+
+  /* Use semantic variables so palette changes propagate */
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family: var(--font-sans); /* "Inter", ... */
 }
 
-/* Optional: fallback solid color if image fails to load */
+/* Optional subtle overlay / texture layer — only if you want it */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: #0f0f0f;                 /* near-black fallback */
   z-index: -2;
+
+  /* Very subtle tint instead of solid black fallback */
+  background: color-mix(in srgb, var(--background) 92%, var(--muted) 8%);
+  /* or completely remove ::before if you don't need a fallback layer */
 }
 
-
-
-
-
-
+/* Responsive background behavior */
 @media (max-width: 768px) {
   body {
     background-attachment: scroll;
@@ -222,52 +169,93 @@ body::before {
   }
 }
 
+/* ────────────────────────────────────────────────
+   Hero / Legend section – make it theme-aware
+───────────────────────────────────────────────── */
+
+.legend {
+  /* Base: use semantic background with subtle transparency if image is kept */
+  background: var(--background);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Optional: keep a background image but with much lighter overlay for light theme */
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--background) 70%, transparent 30%),
+      color-mix(in srgb, var(--background) 40%, transparent 60%)
+    ),
+    url("/bg/choice2-a.jpg");
+
+  /* If you want NO image anymore – just remove the url() part above */
+}
+
+/* When dark mode is active – you can make overlay darker again if desired */
+.dark .legend {
+  /* Optional darker overlay only in dark mode */
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.45)),
+    url("/bg/choice2-a.jpg");
+}
+
+/* ────────────────────────────────────────────────
+   Custom font loading
+───────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Moontime";
+  src:
+    url("/michellevnail/public/fonts/MoonTime-Regular.otf") format("opentype"),
+    url("/michellevnail/public/fonts/MoonTime-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.moontime-header {
+  font-family: "Moontime", cursive, serif !important;
+}
+
+/* Headings use serif font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif); /* "Cormorant Garamond", ... */
+  letter-spacing: 0.04em;
+}
+
+/* ────────────────────────────────────────────────
+   Simple entrance animations (unchanged)
+───────────────────────────────────────────────── */
+
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scaleUp {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .animate-fadeIn {
   animation: fadeIn 0.25s ease-out;
 }
-
 .animate-scaleUp {
   animation: scaleUp 0.25s ease-out;
-}
-
-.legend {
-  /* This layers a black color (0,0,0) with 75% opacity (0.75) on TOP of your image.
-     Adjust 0.75 up to 0.9 for darker, or down to 0.5 for lighter.
-  */
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.40)), url('/bg/choice2-a.jpg');
-  
-  background-size: cover;
-  background-position: center; /* 'center' usually frames photography better than 'left' */
-  background-repeat: no-repeat;
-}
-
-@font-face {
-  font-family: 'Moontime';
-  src: url('/michellevnail/public/fonts/MoonTime-Regular.otf') format('otf'),
-       url('/michellevnail/public/fonts/MoonTime-Regular.ttf') format('tff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;  /* prevents flash of invisible text */
-}
-
-.moontime-header {
-  font-family: 'Moontime', cursive, serif !important;
-}
-body {
-  font-family: 'Inter', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Cormorant Garamond", serif !important;
-  letter-spacing: 0.04em;
 }
