@@ -253,8 +253,8 @@ function HomePage() {
       </div>
 
       {/* Footer */}
-      <div className="bg-gray-900 text-white py-12 px-4 sm:px-8 mt-10">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8">
+      <div className="py-12 px-4 sm:px-8 mt-10">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Contact Info */}
           <div>
             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
