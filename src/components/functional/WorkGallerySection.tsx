@@ -7,8 +7,6 @@ type WorkGallerySectionProps = {
   handleLogoTap?: () => void;
 };
 
-
-
 function toGalleryItems(modules: GlobModules) {
   return Object.keys(modules)
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
@@ -16,12 +14,12 @@ function toGalleryItems(modules: GlobModules) {
       // path is likely something like '/public/images/...jpg' or './public/...jpg'
       // Strip leading '.' or '/public' to get root-relative URL
       let url = path
-        .replace(/^\./, '')           // remove leading . if present
-        .replace(/^\/public/, '')    // remove /public prefix
-        .replace(/^\/src/, '');    // remove /public prefix
+        .replace(/^\./, "") // remove leading . if present
+        .replace(/^\/public/, "") // remove /public prefix
+        .replace(/^\/src/, ""); // remove /public prefix
 
       // Ensure it starts with /
-      if (!url.startsWith('/')) url = '/' + url;
+      if (!url.startsWith("/")) url = "/" + url;
 
       return { original: url, thumbnail: url };
     });
@@ -29,33 +27,91 @@ function toGalleryItems(modules: GlobModules) {
 
 export default function WorkGallerySection({
   handleLogoTap,
-}: WorkGallerySectionProps)  {
+}: WorkGallerySectionProps) {
   // Auto-load each folder
-  const manicureMods = import.meta.glob("/public/images/gallery/manicure/*.{jpg,jpeg,png,webp}", { eager: true });
-  const interiorMods = import.meta.glob("/public/images/gallery/interior/*.{jpg,jpeg,png,webp}", { eager: true });
-  const pedicureMods = import.meta.glob("/public/images/gallery/pedicure/*.{jpg,jpeg,png,webp}", { eager: true });
-  const specialMods = import.meta.glob("/public/images/gallery/special/*.{jpg,jpeg,png,webp}", { eager: true });
-  const lashMods = import.meta.glob("/public/images/gallery/lash/*.{jpg,jpeg,png,webp}", { eager: true });
-  const drinksMods = import.meta.glob("/public/images/gallery/drinks/*.{jpg,jpeg,png,webp}", { eager: true });
-  const menuMods = import.meta.glob("/public/images/gallery/menu/*.{jpg,jpeg,png,webp}", { eager: true });
-  const artMods = import.meta.glob("/public/images/gallery/art/*.{jpg,jpeg,png,webp}", { eager: true });
-  const customerMods = import.meta.glob("/public/images/gallery/customer/*.{jpg,jpeg,png,webp}", { eager: true });
-  const littleMods = import.meta.glob("/public/images/gallery/little/*.{jpg,jpeg,png,webp}", { eager: true });
+  const manicureMods = import.meta.glob(
+    "/public/images/gallery/manicure/*.{jpg,jpeg,png,webp}",
+    { eager: true },
+  );
+  const interiorMods = import.meta.glob(
+    "/public/images/gallery/interior/*.{jpg,jpeg,png,webp}",
+    { eager: true },
+  );
+  const pedicureMods = import.meta.glob(
+    "/public/images/gallery/pedicure/*.{jpg,jpeg,png,webp}",
+    { eager: true },
+  );
+  const specialMods = import.meta.glob(
+    "/public/images/gallery/special/*.{jpg,jpeg,png,webp}",
+    { eager: true },
+  );
+  const lashMods = import.meta.glob(
+    "/public/images/gallery/lash/*.{jpg,jpeg,png,webp}",
+    { eager: true },
+  );
+  const drinksMods = import.meta.glob(
+    "/public/images/gallery/drinks/*.{jpg,jpeg,png,webp}",
+    { eager: true },
+  );
+  const menuMods = import.meta.glob(
+    "/public/images/gallery/menu/*.{jpg,jpeg,png,webp}",
+    { eager: true },
+  );
+  const artMods = import.meta.glob(
+    "/public/images/gallery/art/*.{jpg,jpeg,png,webp}",
+    { eager: true },
+  );
+  const customerMods = import.meta.glob(
+    "/public/images/gallery/customer/*.{jpg,jpeg,png,webp}",
+    { eager: true },
+  );
+  const littleMods = import.meta.glob(
+    "/public/images/gallery/little/*.{jpg,jpeg,png,webp}",
+    { eager: true },
+  );
 
   const categories = useMemo(
     () => [
       { id: "menus", label: "Menu", images: toGalleryItems(menuMods) },
-      { id: "special", label: "Special of the month", images: toGalleryItems(specialMods) },
-      { id: "manicure", label: "Manicure", images: toGalleryItems(manicureMods) },
-      { id: "pedicure", label: "Pedicure", images: toGalleryItems(pedicureMods) },
+      {
+        id: "special",
+        label: "Special of the month",
+        images: toGalleryItems(specialMods),
+      },
+      {
+        id: "manicure",
+        label: "Manicure",
+        images: toGalleryItems(manicureMods),
+      },
+      {
+        id: "pedicure",
+        label: "Pedicure",
+        images: toGalleryItems(pedicureMods),
+      },
       { id: "art", label: "Nail Arts", images: toGalleryItems(artMods) },
       { id: "lash", label: "Lash & Beauty", images: toGalleryItems(lashMods) },
-      { id: "interior", label: "Interior", images: toGalleryItems(interiorMods) },
-      { id: "customer", label: "Customer Experiences", images: toGalleryItems(customerMods) },
-      { id: "drinks", label: "Complimentary Beverages", images: toGalleryItems(drinksMods) }, 
-      { id: "little", label: "Little Princess", images: toGalleryItems(littleMods) },
+      {
+        id: "interior",
+        label: "Interior",
+        images: toGalleryItems(interiorMods),
+      },
+      {
+        id: "customer",
+        label: "Customer Experiences",
+        images: toGalleryItems(customerMods),
+      },
+      {
+        id: "drinks",
+        label: "Complimentary Beverages",
+        images: toGalleryItems(drinksMods),
+      },
+      {
+        id: "little",
+        label: "Little Princess",
+        images: toGalleryItems(littleMods),
+      },
     ],
-    []
+    [],
   );
 
   const [activeId, setActiveId] = useState(categories[0].id);
@@ -63,45 +119,51 @@ export default function WorkGallerySection({
 
   return (
     <div className="p-6 sm:p-10 flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-3 sm:mb-4 text-center text-white">Our Work Gallery</h2>
-      <p className="text-secondary/80 mb-6 text-center max-w-2xl text-white">
+      <h2 className="text-3xl font-bold mb-3 sm:mb-4 text-center text-secondary">
+        Our Work Gallery
+      </h2>
+      <p className="text-secondary/80 mb-6 text-center max-w-2xl text-secondary">
         Browse by category. Click any image to view it larger!
       </p>
 
       {/* Category buttons */}
-<div className="w-full max-w-4xl mb-6 flex flex-wrap justify-center gap-2">
-  {categories.map((cat) => {
-    const isActive = cat.id === activeId;
-    return (
-      <button
-        key={cat.id}
-        type="button"
-        onClick={() => setActiveId(cat.id)}
-        className={[
-          // Base styles
-          "relative px-5 py-2.5 rounded-full text-sm font-medium transition-all",
+      <div className="w-full max-w-4xl mb-6 flex flex-wrap justify-center gap-3 sm:gap-4">
+        {categories.map((cat) => {
+          const isActive = cat.id === activeId;
 
-          // Gradient border effect (gold → black fade)
-          "bg-gradient-to-r from-gold via-gold-dark to-near-black p-[1.5px]",  // thin border thickness; adjust 1.5px → 2px or 3px for thicker
+          return (
+            <div
+              key={cat.id}
+              className={[
+                "rounded-full p-[2px] transition-all duration-300",
+                isActive
+                  ? "bg-gradient-to-r from-primary-hover via-accent to-primary shadow-[0_0_20px_rgba(255,119,130,0.4)]"
+                  : "bg-gradient-to-r from-primary via-accent to-primary-hover",
+              ].join(" ")}
+            >
+              <button
+                type="button"
+                onClick={() => setActiveId(cat.id)}
+                className={[
+                  "block px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-250",
+                  "hover:scale-[1.03] active:scale-[0.97]",
+                  isActive
+                    ? "bg-background text-primary" // cream bg, blush text = "selected"
+                    : "bg-primary text-primary-foreground hover:bg-primary-hover", // solid blush = default
+                ].join(" ")}
+                aria-pressed={isActive}
+              >
+                {cat.label}
+              </button>
+            </div>
+          );
+        })}
+      </div>
 
-          // Inner content background (dark to blend with page)
-          "after:content-[''] after:absolute after:inset-[1.5px] after:rounded-full after:bg-near-black/90 after:transition-all",  // inset matches p-[1.5px]
-
-          // Text & hover/active states
-          isActive
-            ? "text-gold after:bg-near-black shadow-[0_0_12px_rgba(212,175,55,0.4)]"  // active: brighter gold text + glow
-            : "text-white/80 hover:text-gold hover:shadow-[0_0_8px_rgba(212,175,55,0.3)]",
-        ].join(" ")}
-        aria-pressed={isActive}
+      <div
+        className="w-full sm:max-w-[900px] md:max-w-[1200px] lg:max-w-[1400px]"
+        onClick={handleLogoTap}
       >
-        {/* Inner span to position text above the pseudo-element */}
-        <span className="relative z-10">{cat.label}</span>
-      </button>
-    );
-  })}
-</div>
-
-      <div className="w-full sm:max-w-[900px] md:max-w-[1200px] lg:max-w-[1400px]" onClick={handleLogoTap}>
         {active.images.length ? (
           <ImageGallery
             items={active.images}
@@ -127,7 +189,7 @@ export default function WorkGallerySection({
             )}
           />
         ) : (
-          <div className="w-full rounded-xl border border-border p-10 text-center text-secondary/80 text-white">
+          <div className="w-full rounded-xl border border-border p-10 text-center text-secondary/80 text-secondary">
             No images in this category yet.
           </div>
         )}

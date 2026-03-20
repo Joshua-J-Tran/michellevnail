@@ -5,10 +5,39 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+
+  /* Optional: ring / focus rings */
+  --ring: var(--ring);
+
+  /* If you want opacity modifiers like bg-primary/50, keep them enabled */
+  --opacity-50: 0.5;
+  --opacity-90: 0.9;
+  /* ... add more if needed */
+}
+
 :root {
   /* Core palette – easy to swap later */
   --primary: #ff7782; /* Blush Pink – main buttons, highlights, calls-to-action */
   --primary-foreground: #ffffff; /* White text on primary (good contrast) */
+  --primary-hover: #f06270;
 
   --secondary: #36454f; /* Charcoal – dark accents, nav, footers */
   --secondary-foreground: #ffffff; /* White text on secondary */
@@ -54,31 +83,6 @@
   --border: #4b5e67;
   --input: #2f3e47;
   --ring: #ff7782;
-}
-
-@theme {
-  /* Black & near-black base */
-  --color-near-black: #0f0f0f;
-  --color-dark-gray: #1a1a1a;
-  --color-darkest: #111111;
-
-  /* Gold palette – rich & luxurious */
-  --color-gold: #d4af37; /* Main gold for headings, accents, buttons */
-  --color-gold-dark: #b08d57; /* Deeper bronze for hovers/shadows */
-  --color-gold-light: #f5e6c8; /* Subtle champagne highlights */
-  --color-gold-glow: #e6c36a; /* Warmer variant if you want to keep some of your old amber feel */
-
-  /* Text on dark backgrounds */
-  --color-text-primary: #f5f5f5; /* Off-white body text */
-  --color-text-secondary: #e0e0e0;
-  --color-text-muted: #a0a0a0;
-}
-
-/* Optional: If you want to override some defaults (e.g. make gray darker for better black theme) */
-@theme {
-  --color-gray-900: #111111;
-  --color-gray-800: #1a1a1a;
-  --color-gray-700: #2a2a2a;
 }
 
 .gallery-wrapper {

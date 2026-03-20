@@ -47,7 +47,7 @@ function HomePage() {
   };
 
   return (
-    <div className="flex flex-col text-secondary">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* Navbar */}
       <div className="flex flex-col sm:flex-row justify-between items-center moontime-header px-6 sm:px-10 lg:px-20 py-6 gap-4 sm:gap-0">
         {/* Left group: logo + title together */}
@@ -57,16 +57,15 @@ function HomePage() {
             alt="Salon Logo"
             className="h-24 sm:h-10 mx-1 sm:mx-2 rounded-full"
           />
-          <h1 className="text-4xl font-bold text-center sm:text-left">
-            <strong className="text-slate-300">MICHELLE V </strong>
-            <strong className="text-zinc-300">NAILS</strong>
+          <h1 className="text-4xl font-bold text-center sm:text-left text-secondary">
+            MICHELLE V NAILS
           </h1>
         </div>
 
         {/* Right: Book Now button */}
         <Button
           variant="outline"
-          className="bg-[#D4AF37] text-black font-semibold hover:bg-[#E6C36A] border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all"
+          className="bg-primary text-secondary font-semibold hover:bg-primary-hover border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all"
         >
           <Link to="https://michellevnails8634.simplepos.us/">Book Now!</Link>
         </Button>
@@ -80,16 +79,16 @@ function HomePage() {
       >
         {/* Left */}
         <div className="flex flex-col gap-3 text-center lg:text-left">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#e6c36a] drop-shadow-[0_0_10px_rgba(230,195,106,0.3)]">
-            Welcome to <strong className="text-slate-300">MICHELLE V</strong>{" "}
-            <strong className="text-zinc-300">NAILS</strong>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary drop-shadow-md">
+            Welcome to <strong className="text-primary">MICHELLE V</strong>{" "}
+            <strong className="text-primary">NAILS</strong>
           </h1>
 
-          <p className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide">
+          <p className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-secondary tracking-wide">
             Nails & Spa Experience
             <br />
           </p>
-          <Button className="w-max mx-auto lg:mx-0 mt-2 text-secondary bg-amber-100 hover:bg-amber-600 transition-colors font-bold">
+          <Button className="w-max mx-auto lg:mx-0 mt-2 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
             <Link to="https://michellevnails8634.simplepos.us/">
               Start Booking Today!
             </Link>
@@ -160,7 +159,7 @@ function HomePage() {
           />
           <defs>
             <linearGradient id="gradientLeft">
-              <stop offset="0%" stopColor="#D4AF37" />
+              <stop offset="0%" stopColor="bg-primary" />
               <stop offset="100%" stopColor="#111111" />
             </linearGradient>
           </defs>
@@ -185,7 +184,7 @@ function HomePage() {
           />
           <defs>
             <linearGradient id="gradientRight">
-              <stop offset="0%" stopColor="#D4AF37" />
+              <stop offset="0%" stopColor="bg-primary" />
               <stop offset="100%" stopColor="#111111" />
             </linearGradient>
           </defs>
@@ -209,7 +208,7 @@ function HomePage() {
           />
           <defs>
             <linearGradient id="gradientLeft-2">
-              <stop offset="0%" stopColor="#D4AF37" />
+              <stop offset="0%" stopColor="bg-primary" />
               <stop offset="100%" stopColor="#111111" />
             </linearGradient>
           </defs>
@@ -234,7 +233,7 @@ function HomePage() {
           />
           <defs>
             <linearGradient id="gradientRight-2">
-              <stop offset="0%" stopColor="#D4AF37" />
+              <stop offset="0%" stopColor="bg-primary" />
               <stop offset="100%" stopColor="#111111" />
             </linearGradient>
           </defs>
@@ -243,10 +242,10 @@ function HomePage() {
 
       {/* What People Say Section */}
       <div className="p-6 sm:p-10 flex flex-col items-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center text-white">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center text-secondary">
           Nails & Spa Experience
         </h2>
-        <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-center font-semibold text-white">
+        <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-center font-semibold text-secondary">
           Here is what our customers say about us.
         </p>
         {<TestimonialCarousel />}
@@ -275,12 +274,12 @@ function HomePage() {
           </div>
 
           {/* Social Media */}
-          <div>
+          <div className="flex flex-col items-center text-center">
             <h3 className="text-xl font-bold mb-4">Follow Us</h3>
             {SocialLinks()}
             <Button
               variant="outline"
-              className="text-secondary font-bold mt-6 w-full sm:w-auto"
+              className="bg-primary text-secondary font-semibold hover:bg-primary-hover border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] mt-6 transition-all"
             >
               <Link to="https://michellevnails8634.simplepos.us/">
                 Book Now!
