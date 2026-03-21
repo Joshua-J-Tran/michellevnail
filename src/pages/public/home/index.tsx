@@ -79,37 +79,34 @@ function HomePage() {
         </Button>
       </div>
 
-      {/* Hero Section */}
-      <div
-        className="legend flex flex-col lg:grid lg:grid-cols-1 gap-6 sm:gap-10 items-center
-                   px-4 sm:px-6 lg:px-20 py-10
-                   legend sm:min-h-[30vh] lg:min-h-[40vh]"
-      >
-        {/* Left */}
-        <div className="flex flex-col gap-3 text-center lg:text-left">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary drop-shadow-md">
-            <span className="block ">Welcome to</span>{" "}
-            <span className="block sm:mt-2">
-              <strong className="text-secondary">MICHELLE V NAILS</strong>
-            </span>
-          </h1>
+      {/* Hero wrapper */}
+      <div className="flex flex-row items-stretch max-h-[50vh]">
+        {/* Left - legend background */}
+        <div className="legend w-full min-w-0 sm:flex-1 px-4 sm:px-6 lg:px-20 py-10 sm:min-h-[30vh] lg:min-h-[40vh] flex items-center justify-center sm:justify-start">
+          <div className="flex flex-col gap-3 text-center lg:text-left">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary drop-shadow-md">
+              <span className="block">Welcome to</span>{" "}
+              <span className="block sm:mt-2">
+                <strong className="text-secondary">MICHELLE V NAILS</strong>
+              </span>
+            </h1>
 
-          <Button className="hidden sm:flex w-max mx-auto lg:mx-0 mt-2 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
-            <Link to="https://michellevnails8634.simplepos.us/">
-              Start Booking Today!
-            </Link>
-          </Button>
+            <Button className="hidden sm:flex w-max mx-auto lg:mx-0 mt-2 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
+              <Link to="https://michellevnails8634.simplepos.us/">
+                Start Booking Today!
+              </Link>
+            </Button>
+          </div>
         </div>
 
-        {/* Right 
-                <div className="flex justify-center items-center mt-6 lg:mt-0 cursor-pointer" onClick={handleLogoTap}>
-                    <img
-                        src="/placeholder/logo.png"
-                        className="h-64 sm:h-80 md:h-96 object-contain rounded-lg"
-                        alt="/placeholder/placeholder1.png"
-                    />
-                </div>
-                */}
+        {/* Right - hidden on small, visible sm+ */}
+        <div className="hidden sm:flex flex-1 justify-center items-center py-6 px-4">
+          <img
+            src="/placeholder/logo.png"
+            className="w-full h-full max-h-full object-contain rounded-lg"
+            alt="/placeholder/placeholder1.png"
+          />
+        </div>
       </div>
 
       {/* REDACTED Image Gallery Section 
