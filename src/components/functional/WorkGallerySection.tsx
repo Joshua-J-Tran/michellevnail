@@ -72,7 +72,6 @@ export default function WorkGallerySection({
 
   const categories = useMemo(
     () => [
-      { id: "menus", label: "Menu", images: toGalleryItems(menuMods) },
       {
         id: "special",
         label: "Special of the month",
@@ -89,6 +88,11 @@ export default function WorkGallerySection({
         images: toGalleryItems(pedicureMods),
       },
       { id: "art", label: "Nail Arts", images: toGalleryItems(artMods) },
+      {
+        id: "little",
+        label: "Little Princess",
+        images: toGalleryItems(littleMods),
+      },
       { id: "lash", label: "Lash & Beauty", images: toGalleryItems(lashMods) },
       {
         id: "interior",
@@ -105,11 +109,8 @@ export default function WorkGallerySection({
         label: "Complimentary Beverages",
         images: toGalleryItems(drinksMods),
       },
-      {
-        id: "little",
-        label: "Little Princess",
-        images: toGalleryItems(littleMods),
-      },
+
+      { id: "menus", label: "Menu", images: toGalleryItems(menuMods) },
     ],
     [],
   );
