@@ -60,14 +60,22 @@ function HomePage() {
           <h1 className="text-4xl font-bold text-center sm:text-left text-secondary">
             MICHELLE V NAILS
           </h1>
+          <p className="block sm:hidden mt-0 text-lg font-bold text-secondary tracking-wide">
+            Nails & Spa Experience
+          </p>
         </div>
 
         {/* Right: Book Now button */}
         <Button
           variant="outline"
-          className="bg-primary text-secondary font-semibold hover:bg-primary-hover border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all"
+          className="hidden sm:flex bg-primary text-secondary font-semibold hover:bg-primary-hover border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all"
         >
           <Link to="https://michellevnails8634.simplepos.us/">Book Now!</Link>
+        </Button>
+        <Button className="block sm:hidden w-max mx-auto lg:mx-0 mt-0 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
+          <Link to="https://michellevnails8634.simplepos.us/">
+            Start Booking Today!
+          </Link>
         </Button>
       </div>
 
@@ -80,15 +88,17 @@ function HomePage() {
         {/* Left */}
         <div className="flex flex-col gap-3 text-center lg:text-left">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary drop-shadow-md">
-            Welcome to <strong className="text-primary">MICHELLE V</strong>{" "}
-            <strong className="text-primary">NAILS</strong>
+            <span className="block ">Welcome to</span>{" "}
+            <span className="block sm:mt-6">
+              <strong className="text-primary">MICHELLE V NAILS</strong>
+            </span>
           </h1>
 
-          <p className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-secondary tracking-wide">
+          <p className="hidden sm:flex mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-secondary tracking-wide">
             Nails & Spa Experience
             <br />
           </p>
-          <Button className="w-max mx-auto lg:mx-0 mt-2 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
+          <Button className="hidden sm:flex w-max mx-auto lg:mx-0 mt-2 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
             <Link to="https://michellevnails8634.simplepos.us/">
               Start Booking Today!
             </Link>
@@ -255,9 +265,9 @@ function HomePage() {
       <div className="py-12 px-4 sm:px-8 mt-10">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Contact Info */}
-          <div>
+          <div className="flex flex-col items-center text-center">
             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-            <p>MICHELLE V NAIL</p>
+            <p>MICHELLE V NAILS</p>
             <p>4645 Hwy 6 A, Sugar Land, TX 77478</p>
             <p>☏: (281) 242-1015</p>
             <p>🕻 (Text Only): (713) 282-1475</p>
@@ -265,7 +275,7 @@ function HomePage() {
           </div>
 
           {/* Operating Hours */}
-          <div>
+          <div className="flex flex-col items-center text-center">
             <h3 className="text-xl font-bold mb-4">Operating Hours</h3>
             <ul>
               <li>Mon – Sat: 9:00 AM – 7:00 PM</li>

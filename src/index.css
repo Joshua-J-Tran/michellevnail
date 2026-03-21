@@ -14,6 +14,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
 
   --color-accent: var(--accent);
+  --color-highlight: var(--highlight);
   --color-accent-foreground: var(--accent-foreground);
 
   --color-background: var(--background);
@@ -42,7 +43,8 @@
   --secondary: #36454f; /* Charcoal – dark accents, nav, footers */
   --secondary-foreground: #ffffff; /* White text on secondary */
 
-  --accent: #f7e6ca; /* Champagne Gold – luxurious highlights, icons, borders */
+  --accent: #c9a84c; /* Antique Gold – pops against cream background */
+  --highlight: #c9a84c;
   --accent-foreground: #36454f; /* Charcoal text on accent for readability */
 
   --highlight: #f7e6ca; /* Alias for accent if you prefer "highlight" */
