@@ -78,15 +78,16 @@ export default function WorkGallerySection({
         images: toGalleryItems(specialMods),
       },
       {
-        id: "manicure",
-        label: "Manicure",
-        images: toGalleryItems(manicureMods),
-      },
-      {
         id: "pedicure",
         label: "Pedicure",
         images: toGalleryItems(pedicureMods),
       },
+      {
+        id: "manicure",
+        label: "Manicure",
+        images: toGalleryItems(manicureMods),
+      },
+
       { id: "art", label: "Nail Arts", images: toGalleryItems(artMods) },
       {
         id: "little",

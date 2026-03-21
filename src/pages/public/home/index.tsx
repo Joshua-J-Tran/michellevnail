@@ -8,6 +8,7 @@ import WorkGallerySection from "@/components/functional/WorkGallerySection";
 import SocialLinks from "@/components/functional/socials";
 import ServiceList from "@/components/functional/service-list";
 import TestimonialCarousel from "@/components/functional/TestimonialCarousel";
+import WelcomePopup from "@/components/functional/WelcomePopup";
 import { useEffect, useState } from "react";
 
 function HomePage() {
@@ -47,69 +48,62 @@ function HomePage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
-      {/* Navbar */}
-      <div className="flex flex-col sm:flex-row justify-between items-center moontime-header px-6 sm:px-10 lg:px-20 py-6 gap-4 sm:gap-0">
-        {/* Left group: logo + title together */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
-          <img
-            src="/images/logo-a.png"
-            alt="Salon Logo"
-            className="h-24 sm:h-10 mx-1 sm:mx-2 rounded-full"
-          />
-          <h1 className="hidden sm:flex text-3xl font-bold text-center sm:text-left text-secondary">
-            Nails & Spa Experience
-          </h1>
-          <p className="block sm:hidden mt-0 text-lg font-bold text-secondary tracking-wide">
-            Nails & Spa Experience
-          </p>
+    <>
+      <WelcomePopup />
+      <div className="flex flex-col min-h-screen bg-background text-foreground">
+        {/* Navbar */}
+        <div className="flex flex-col sm:flex-row justify-between items-center moontime-header px-6 sm:px-10 lg:px-20 py-6 gap-4 sm:gap-0">
+          {/* Left group: logo + title together */}
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+            <img
+              src="/images/logo-a.png"
+              alt="Salon Logo"
+              className="h-24 sm:h-10 mx-1 sm:mx-2 rounded-full"
+            />
+            <h1 className="hidden sm:flex text-3xl font-bold text-center sm:text-left text-secondary">
+              Nails & Spa Experience
+            </h1>
+            <p className="block sm:hidden mt-0 text-lg font-bold text-secondary tracking-wide">
+              Nails & Spa Experience
+            </p>
+          </div>
+
+          {/* Right: Book Now button */}
+          <Button
+            variant="outline"
+            className="hidden sm:flex bg-primary text-secondary font-semibold hover:bg-primary-hover border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all"
+          >
+            <Link to="https://michellevnails8634.simplepos.us/">Book Now!</Link>
+          </Button>
+          <Button className="block sm:hidden w-max mx-auto lg:mx-0 mt-0 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
+            <Link to="https://michellevnails8634.simplepos.us/">
+              Start Booking Today!
+            </Link>
+          </Button>
         </div>
 
-        {/* Right: Book Now button */}
-        <Button
-          variant="outline"
-          className="hidden sm:flex bg-primary text-secondary font-semibold hover:bg-primary-hover border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all"
-        >
-          <Link to="https://michellevnails8634.simplepos.us/">Book Now!</Link>
-        </Button>
-        <Button className="block sm:hidden w-max mx-auto lg:mx-0 mt-0 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
-          <Link to="https://michellevnails8634.simplepos.us/">
-            Start Booking Today!
-          </Link>
-        </Button>
-      </div>
+        {/* Hero wrapper */}
+        <div className="flex flex-row items-stretch max-h-[50vh]">
+          {/* Left - legend background */}
+          <div className="legend w-full min-w-0 sm:flex-1 px-4 sm:px-6 lg:px-20 py-10 sm:min-h-[30vh] lg:min-h-[40vh] flex items-center justify-center sm:justify-start">
+            <div className="flex flex-col gap-3 text-center lg:text-left">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary drop-shadow-md">
+                <span className="block">Welcome to</span>{" "}
+                <span className="block sm:mt-2">
+                  <strong className="text-secondary">MICHELLE V NAILS</strong>
+                </span>
+              </h1>
 
-      {/* Hero wrapper */}
-      <div className="flex flex-row items-stretch max-h-[50vh]">
-        {/* Left - legend background */}
-        <div className="legend w-full min-w-0 sm:flex-1 px-4 sm:px-6 lg:px-20 py-10 sm:min-h-[30vh] lg:min-h-[40vh] flex items-center justify-center sm:justify-start">
-          <div className="flex flex-col gap-3 text-center lg:text-left">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary drop-shadow-md">
-              <span className="block">Welcome to</span>{" "}
-              <span className="block sm:mt-2">
-                <strong className="text-secondary">MICHELLE V NAILS</strong>
-              </span>
-            </h1>
-
-            <Button className="hidden sm:flex w-max mx-auto lg:mx-0 mt-2 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
-              <Link to="https://michellevnails8634.simplepos.us/">
-                Start Booking Today!
-              </Link>
-            </Button>
+              <Button className="hidden sm:flex w-max mx-auto lg:mx-0 mt-2 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
+                <Link to="https://michellevnails8634.simplepos.us/">
+                  Start Booking Today!
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
 
-        {/* Right - hidden on small, visible sm+ */}
-        <div className="hidden sm:flex flex-1 justify-center items-center py-6 px-4">
-          <img
-            src="/placeholder/logo.png"
-            className="w-full h-full max-h-full object-contain rounded-lg"
-            alt="/placeholder/placeholder1.png"
-          />
-        </div>
-      </div>
-
-      {/* REDACTED Image Gallery Section 
+        {/* REDACTED Image Gallery Section 
             <div className="p-6 sm:p-10 flex flex-col items-center">
                 <h2 className="text-3xl font-bold mb-4 sm:mb-6 text-center">Our Work Gallery</h2>
                 <p className="text-secondary/80 mb-6 sm:mb-8 text-center max-w-2xl">
@@ -144,159 +138,160 @@ function HomePage() {
             </div>
             */}
 
-      {/* Updated image Gallery Section */}
-      <WorkGallerySection handleLogoTap={handleLogoTap} />
+        {/* Updated image Gallery Section */}
+        <WorkGallerySection handleLogoTap={handleLogoTap} />
 
-      {/* Curvy Stylish Divider with Logo */}
-      <div className="flex items-center mt-4 w-full max-w-[1400px] mx-auto px-4 sm:px-0">
-        <svg
-          className="flex-1 h-12"
-          viewBox="0 0 200 40"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 20 Q50 0 100 20 T200 20"
-            fill="none"
-            stroke="url(#gradientLeft)"
-            strokeWidth="4"
+        {/* Curvy Stylish Divider with Logo */}
+        <div className="flex items-center mt-4 w-full max-w-[1400px] mx-auto px-4 sm:px-0">
+          <svg
+            className="flex-1 h-12"
+            viewBox="0 0 200 40"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 20 Q50 0 100 20 T200 20"
+              fill="none"
+              stroke="url(#gradientLeft)"
+              strokeWidth="4"
+            />
+            <defs>
+              <linearGradient id="gradientLeft">
+                <stop offset="0%" stopColor="bg-primary" />
+                <stop offset="100%" stopColor="#111111" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <img
+            src="/images/logo-a.png"
+            alt="Salon Logo"
+            className="h-64 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
           />
-          <defs>
-            <linearGradient id="gradientLeft">
-              <stop offset="0%" stopColor="bg-primary" />
-              <stop offset="100%" stopColor="#111111" />
-            </linearGradient>
-          </defs>
-        </svg>
 
-        <img
-          src="/images/logo-a.png"
-          alt="Salon Logo"
-          className="h-64 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
-        />
-
-        <svg
-          className="flex-1 h-12"
-          viewBox="0 0 200 40"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 20 Q50 40 100 20 T200 20"
-            fill="none"
-            stroke="url(#gradientRight)"
-            strokeWidth="4"
-          />
-          <defs>
-            <linearGradient id="gradientRight">
-              <stop offset="0%" stopColor="bg-primary" />
-              <stop offset="100%" stopColor="#111111" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      {ServiceList()}
-
-      {/* Curvy Stylish Divider with Logo */}
-      <div className="flex items-center mt-4 w-full max-w-[1400px] mx-auto px-4 sm:px-0">
-        <svg
-          className="flex-1 h-12"
-          viewBox="0 0 200 40"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 20 Q50 0 100 20 T200 20"
-            fill="none"
-            stroke="url(#gradientLeft-2)"
-            strokeWidth="4"
-          />
-          <defs>
-            <linearGradient id="gradientLeft-2">
-              <stop offset="0%" stopColor="bg-primary" />
-              <stop offset="100%" stopColor="#111111" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <img
-          src="/images/logo-a.png"
-          alt="Salon Logo"
-          className="h-64 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
-        />
-
-        <svg
-          className="flex-1 h-12"
-          viewBox="0 0 200 40"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 20 Q50 40 100 20 T200 20"
-            fill="none"
-            stroke="url(#gradientRight-2)"
-            strokeWidth="4"
-          />
-          <defs>
-            <linearGradient id="gradientRight-2">
-              <stop offset="0%" stopColor="bg-primary" />
-              <stop offset="100%" stopColor="#111111" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      {/* What People Say Section */}
-      <div className="p-6 sm:p-10 flex flex-col items-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center text-secondary">
-          Nails & Spa Experience
-        </h2>
-        <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-center font-semibold text-secondary">
-          Here is what our customers say about us.
-        </p>
-        {<TestimonialCarousel />}
-      </div>
-
-      {/* Footer */}
-      <div className="py-12 px-4 sm:px-8 mt-10">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {/* Contact Info */}
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-            <p>MICHELLE V NAILS</p>
-            <p>4645 Hwy 6 A, Sugar Land, TX 77478</p>
-            <p>☏: (281) 242-1015</p>
-            <p>🕻 (Text Only): (713) 282-1475</p>
-            <p>Email: michellevnails@gmail.com</p>
-          </div>
-
-          {/* Operating Hours */}
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-xl font-bold mb-4">Operating Hours</h3>
-            <ul>
-              <li>Mon – Sat: 9:00 AM – 7:00 PM</li>
-              <li>Sun: 10:00 AM – 6:00 PM</li>
-            </ul>
-          </div>
-
-          {/* Social Media */}
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-            {SocialLinks()}
-            <Button
-              variant="outline"
-              className="bg-primary text-secondary font-semibold hover:bg-primary-hover border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] mt-6 transition-all"
-            >
-              <Link to="https://michellevnails8634.simplepos.us/">
-                Book Now!
-              </Link>
-            </Button>
-          </div>
+          <svg
+            className="flex-1 h-12"
+            viewBox="0 0 200 40"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 20 Q50 40 100 20 T200 20"
+              fill="none"
+              stroke="url(#gradientRight)"
+              strokeWidth="4"
+            />
+            <defs>
+              <linearGradient id="gradientRight">
+                <stop offset="0%" stopColor="bg-primary" />
+                <stop offset="100%" stopColor="#111111" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 text-center text-gray-400 text-sm">
-          © {new Date().getFullYear()} Michelle V Nails. All rights reserved.
+        {ServiceList()}
+
+        {/* Curvy Stylish Divider with Logo */}
+        <div className="flex items-center mt-4 w-full max-w-[1400px] mx-auto px-4 sm:px-0">
+          <svg
+            className="flex-1 h-12"
+            viewBox="0 0 200 40"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 20 Q50 0 100 20 T200 20"
+              fill="none"
+              stroke="url(#gradientLeft-2)"
+              strokeWidth="4"
+            />
+            <defs>
+              <linearGradient id="gradientLeft-2">
+                <stop offset="0%" stopColor="bg-primary" />
+                <stop offset="100%" stopColor="#111111" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <img
+            src="/images/logo-a.png"
+            alt="Salon Logo"
+            className="h-64 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
+          />
+
+          <svg
+            className="flex-1 h-12"
+            viewBox="0 0 200 40"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 20 Q50 40 100 20 T200 20"
+              fill="none"
+              stroke="url(#gradientRight-2)"
+              strokeWidth="4"
+            />
+            <defs>
+              <linearGradient id="gradientRight-2">
+                <stop offset="0%" stopColor="bg-primary" />
+                <stop offset="100%" stopColor="#111111" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* What People Say Section */}
+        <div className="p-6 sm:p-10 flex flex-col items-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center text-secondary">
+            Nails & Spa Experience
+          </h2>
+          <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-center font-semibold text-secondary">
+            Here is what our customers say about us.
+          </p>
+          {<TestimonialCarousel />}
+        </div>
+
+        {/* Footer */}
+        <div className="py-12 px-4 sm:px-8 mt-10">
+          <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {/* Contact Info */}
+            <div className="flex flex-col items-center text-center">
+              <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+              <p>MICHELLE V NAILS</p>
+              <p>4645 Hwy 6 A, Sugar Land, TX 77478</p>
+              <p>☏: (281) 242-1015</p>
+              <p>🕻 (Text Only): (713) 282-1475</p>
+              <p>Email: michellevnails@gmail.com</p>
+            </div>
+
+            {/* Operating Hours */}
+            <div className="flex flex-col items-center text-center">
+              <h3 className="text-xl font-bold mb-4">Operating Hours</h3>
+              <ul>
+                <li>Mon – Sat: 9:00 AM – 7:00 PM</li>
+                <li>Sun: 10:00 AM – 6:00 PM</li>
+              </ul>
+            </div>
+
+            {/* Social Media */}
+            <div className="flex flex-col items-center text-center">
+              <h3 className="text-xl font-bold mb-4">Follow Us</h3>
+              {SocialLinks()}
+              <Button
+                variant="outline"
+                className="bg-primary text-secondary font-semibold hover:bg-primary-hover border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] mt-6 transition-all"
+              >
+                <Link to="https://michellevnails8634.simplepos.us/">
+                  Book Now!
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="mt-8 text-center text-gray-400 text-sm">
+            © {new Date().getFullYear()} Michelle V Nails. All rights reserved.
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

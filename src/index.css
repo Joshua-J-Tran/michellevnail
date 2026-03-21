@@ -36,11 +36,11 @@
 
 :root {
   /* Core palette – easy to swap later */
-  --primary: #ff7782; /* Blush Pink – main buttons, highlights, calls-to-action */
+  --primary: #caa244; /* Blush Pink – main buttons, highlights, calls-to-action */
   --primary-foreground: #ffffff; /* White text on primary (good contrast) */
-  --primary-hover: #f06270;
+  --primary-hover: #cc9f37;
 
-  --secondary: #36454f; /* Charcoal – dark accents, nav, footers */
+  --secondary: #ebebeb; /* Charcoal – dark accents, nav, footers */
   --secondary-foreground: #ffffff; /* White text on secondary */
 
   --accent: #c9a84c; /* Antique Gold – pops against cream background */
@@ -49,8 +49,8 @@
 
   --highlight: #f7e6ca; /* Alias for accent if you prefer "highlight" */
 
-  --background: #fdf4dc; /* Warm White – main page background (creamy, soft) */
-  --foreground: #36454f; /* Charcoal – default body text */
+  --background: #000000; /* Warm White – main page background (creamy, soft) */
+  --foreground: #ebebeb; /* Charcoal – default body text */
 
   --muted: #e0d9d1; /* Soft warm gray (derived from warm white + charcoal) */
   --muted-foreground: #6b7280; /* Medium gray for secondary text */
