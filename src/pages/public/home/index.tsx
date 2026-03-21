@@ -81,7 +81,7 @@ function HomePage() {
 
       {/* Hero Section */}
       <div
-        className="legend flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-10 items-center
+        className="legend flex flex-col lg:grid lg:grid-cols-1 gap-6 sm:gap-10 items-center
                    px-4 sm:px-6 lg:px-20 py-10
                    legend sm:min-h-[70vh] lg:min-h-[80vh]"
       >
@@ -89,12 +89,14 @@ function HomePage() {
         <div className="flex flex-col gap-3 text-center lg:text-left">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary drop-shadow-md">
             <span className="block ">Welcome to</span>{" "}
-            <span className="block sm:mt-6">
-              <strong className="text-primary">MICHELLE V NAILS</strong>
+            <span className="block sm:mt-2">
+              <strong className="bg-gradient-to-r from-[#ff7782] via-[#ffb347] to-[#ff7782] bg-clip-text text-transparent">
+                MICHELLE V NAILS
+              </strong>
             </span>
           </h1>
 
-          <p className="hidden sm:flex mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-secondary tracking-wide">
+          <p className="hidden sm:flex mt-4 sm:mt-2 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-secondary tracking-wide">
             Nails & Spa Experience
             <br />
           </p>
