@@ -180,13 +180,13 @@ body::before {
 ───────────────────────────────────────────────── */
 
 .legend {
-  /* Base: use semantic background with subtle transparency if image is kept */
   background: var(--background);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  max-height: 100px;
+  overflow: hidden;
 
-  /* Optional: keep a background image but with much lighter overlay for light theme */
   background-image:
     linear-gradient(
       to right,
@@ -194,8 +194,6 @@ body::before {
       color-mix(in srgb, var(--background) 40%, transparent 60%)
     ),
     url("/bg/choice2-a.jpg");
-
-  /* If you want NO image anymore – just remove the url() part above */
 }
 
 /* When dark mode is active – you can make overlay darker again if desired */

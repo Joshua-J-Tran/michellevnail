@@ -83,7 +83,7 @@ function HomePage() {
       <div
         className="legend flex flex-col lg:grid lg:grid-cols-1 gap-6 sm:gap-10 items-center
                    px-4 sm:px-6 lg:px-20 py-10
-                   legend sm:min-h-[70vh] lg:min-h-[80vh]"
+                   legend sm:min-h-[50vh] lg:min-h-[60vh]"
       >
         {/* Left */}
         <div className="flex flex-col gap-3 text-center lg:text-left">
@@ -94,7 +94,6 @@ function HomePage() {
             </span>
           </h1>
 
-        
           <Button className="hidden sm:flex w-max mx-auto lg:mx-0 mt-2 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
             <Link to="https://michellevnails8634.simplepos.us/">
               Start Booking Today!
