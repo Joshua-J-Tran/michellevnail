@@ -148,24 +148,24 @@ function HomePage() {
             viewBox="0 0 200 40"
             preserveAspectRatio="none"
           >
+            <defs>
+              <linearGradient id="gradientLeft">
+                <stop offset="0%" stopColor="var(--primary)" />
+                <stop offset="100%" stopColor="var(--background)" />
+              </linearGradient>
+            </defs>
             <path
               d="M0 20 Q50 0 100 20 T200 20"
               fill="none"
               stroke="url(#gradientLeft)"
               strokeWidth="4"
             />
-            <defs>
-              <linearGradient id="gradientLeft">
-                <stop offset="0%" stopColor="bg-primary" />
-                <stop offset="100%" stopColor="#111111" />
-              </linearGradient>
-            </defs>
           </svg>
 
           <img
             src="/images/logo-a.png"
             alt="Salon Logo"
-            className="h-64 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
+            className="h-30 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
           />
 
           <svg
@@ -173,18 +173,18 @@ function HomePage() {
             viewBox="0 0 200 40"
             preserveAspectRatio="none"
           >
+            <defs>
+              <linearGradient id="gradientRight">
+                <stop offset="0%" stopColor="var(--background)" />
+                <stop offset="100%" stopColor="var(--primary)" />
+              </linearGradient>
+            </defs>
             <path
               d="M0 20 Q50 40 100 20 T200 20"
               fill="none"
               stroke="url(#gradientRight)"
               strokeWidth="4"
             />
-            <defs>
-              <linearGradient id="gradientRight">
-                <stop offset="0%" stopColor="bg-primary" />
-                <stop offset="100%" stopColor="#111111" />
-              </linearGradient>
-            </defs>
           </svg>
         </div>
 
@@ -197,24 +197,24 @@ function HomePage() {
             viewBox="0 0 200 40"
             preserveAspectRatio="none"
           >
+            <defs>
+              <linearGradient id="gradientLeft">
+                <stop offset="0%" stopColor="var(--primary)" />
+                <stop offset="100%" stopColor="var(--background)" />
+              </linearGradient>
+            </defs>
             <path
               d="M0 20 Q50 0 100 20 T200 20"
               fill="none"
-              stroke="url(#gradientLeft-2)"
+              stroke="url(#gradientLeft)"
               strokeWidth="4"
             />
-            <defs>
-              <linearGradient id="gradientLeft-2">
-                <stop offset="0%" stopColor="bg-primary" />
-                <stop offset="100%" stopColor="#111111" />
-              </linearGradient>
-            </defs>
           </svg>
 
           <img
             src="/images/logo-a.png"
             alt="Salon Logo"
-            className="h-64 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
+            className="h-30 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
           />
 
           <svg
@@ -222,18 +222,18 @@ function HomePage() {
             viewBox="0 0 200 40"
             preserveAspectRatio="none"
           >
+            <defs>
+              <linearGradient id="gradientRight">
+                <stop offset="0%" stopColor="var(--background)" />
+                <stop offset="100%" stopColor="var(--primary)" />
+              </linearGradient>
+            </defs>
             <path
               d="M0 20 Q50 40 100 20 T200 20"
               fill="none"
-              stroke="url(#gradientRight-2)"
+              stroke="url(#gradientRight)"
               strokeWidth="4"
             />
-            <defs>
-              <linearGradient id="gradientRight-2">
-                <stop offset="0%" stopColor="bg-primary" />
-                <stop offset="100%" stopColor="#111111" />
-              </linearGradient>
-            </defs>
           </svg>
         </div>
 

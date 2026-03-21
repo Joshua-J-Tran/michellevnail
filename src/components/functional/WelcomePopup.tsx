@@ -27,7 +27,7 @@ export default function WelcomePopup() {
         <img
           src="/placeholder/logo.png"
           alt="Michelle V Nails Logo"
-          className="h-130 sm:h-170 object-contain rounded-2xl border-3 border-primary/80"
+          className="w-[70vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] max-h-[80vh] object-contain rounded-2xl border-3 border-primary/80"
         />
       </div>
     </div>

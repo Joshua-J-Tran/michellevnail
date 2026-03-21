@@ -36,9 +36,9 @@
 
 :root {
   /* Core palette – easy to swap later */
-  --primary: #caa244; /* Blush Pink – main buttons, highlights, calls-to-action */
+  --primary: #c79a32; /* Blush Pink – main buttons, highlights, calls-to-action */
   --primary-foreground: #ffffff; /* White text on primary (good contrast) */
-  --primary-hover: #cc9f37;
+  --primary-hover: #d19e25;
 
   --secondary: #ebebeb; /* Charcoal – dark accents, nav, footers */
   --secondary-foreground: #ffffff; /* White text on secondary */
