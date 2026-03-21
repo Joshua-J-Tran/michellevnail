@@ -94,10 +94,7 @@ function HomePage() {
             </span>
           </h1>
 
-          <p className="hidden sm:flex mt-4 sm:mt-2 text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-secondary tracking-wide">
-            Nails & Spa Experience
-            <br />
-          </p>
+        
           <Button className="hidden sm:flex w-max mx-auto lg:mx-0 mt-2 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
             <Link to="https://michellevnails8634.simplepos.us/">
               Start Booking Today!
