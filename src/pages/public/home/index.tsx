@@ -57,8 +57,8 @@ function HomePage() {
             alt="Salon Logo"
             className="h-24 sm:h-10 mx-1 sm:mx-2 rounded-full"
           />
-          <h1 className="text-4xl font-bold text-center sm:text-left text-secondary">
-            MICHELLE V NAILS
+          <h1 className="hidden sm:flex text-3xl font-bold text-center sm:text-left text-secondary">
+            Nails & Spa Experience
           </h1>
           <p className="block sm:hidden mt-0 text-lg font-bold text-secondary tracking-wide">
             Nails & Spa Experience
@@ -90,9 +90,7 @@ function HomePage() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary drop-shadow-md">
             <span className="block ">Welcome to</span>{" "}
             <span className="block sm:mt-2">
-              <strong className="bg-gradient-to-r from-[#ff7782] via-[#ffb347] to-[#ff7782] bg-clip-text text-transparent">
-                MICHELLE V NAILS
-              </strong>
+              <strong className="text-secondary">MICHELLE V NAILS</strong>
             </span>
           </h1>
 
