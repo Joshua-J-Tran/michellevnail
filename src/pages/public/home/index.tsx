@@ -256,8 +256,8 @@ function HomePage() {
               <h3 className="text-xl font-bold mb-4">Contact Us</h3>
               <p>MICHELLE V NAILS</p>
               <p>4645 Hwy 6 A, Sugar Land, TX 77478</p>
-              <p>☏: (281) 242-1015</p>
-              <p>🕻 (Text Only): (713) 282-1475</p>
+              <p>Call: (281) 242-1015</p>
+              <p>Text: (281) 242-1015</p>
               <p>Email: michellevnails@gmail.com</p>
             </div>
 
