@@ -37,12 +37,14 @@ export default function WelcomePopup() {
     >
       <div
         className="relative flex items-center justify-center"
-        onClick={(e) => e.stopPropagation()}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
         {/* Image strip */}
-        <div className="relative flex items-center justify-center w-[70vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] h-[80vh]">
+        <div
+          className="relative flex items-center justify-center w-[70vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] h-[80vh]"
+          onClick={(e) => e.stopPropagation()}
+        >
           {/* Close - anchored to top-right of image container */}
           <button
             onClick={() => setVisible(false)}
