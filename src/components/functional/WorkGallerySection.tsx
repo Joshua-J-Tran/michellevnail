@@ -30,7 +30,7 @@ export default function WorkGallerySection({
 }: WorkGallerySectionProps) {
   // Auto-load each folder
   const manicureMods = import.meta.glob(
-    "/public/images/gallery/manicure/*.{jpg,jpeg,png,webp}",
+    "/public/images/gallery/manicure/*.{jpg,jpeg,png,webp,gif}",
     { eager: true },
   );
   const interiorMods = import.meta.glob(
@@ -38,7 +38,7 @@ export default function WorkGallerySection({
     { eager: true },
   );
   const pedicureMods = import.meta.glob(
-    "/public/images/gallery/pedicure/*.{jpg,jpeg,png,webp}",
+    "/public/images/gallery/pedicure/*.{jpg,jpeg,png,webp,gif}",
     { eager: true },
   );
   const specialMods = import.meta.glob(
