@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useCallback } from "react";
 import ImageGallery from "react-image-gallery";
 
 type GlobModules = Record<string, unknown>;
@@ -11,25 +11,176 @@ function toGalleryItems(modules: GlobModules) {
   return Object.keys(modules)
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
     .map((path) => {
-      // path is likely something like '/public/images/...jpg' or './public/...jpg'
-      // Strip leading '.' or '/public' to get root-relative URL
       let url = path
-        .replace(/^\./, "") // remove leading . if present
-        .replace(/^\/public/, "") // remove /public prefix
-        .replace(/^\/src/, ""); // remove /public prefix
+        .replace(/^\./, "")
+        .replace(/^\/public/, "")
+        .replace(/^\/src/, "");
 
-      // Ensure it starts with /
       if (!url.startsWith("/")) url = "/" + url;
 
       return { original: url, thumbnail: url };
     });
 }
 
+// ─── Pinch-to-zoom image component ───────────────────────────────────────────
+function ZoomableImage({ src }: { src: string }) {
+  const [scale, setScale] = useState(1);
+  const [translate, setTranslate] = useState({ x: 0, y: 0 });
+
+  // Pointer tracking refs
+  const pointers = useRef<Map<number, PointerEvent>>(new Map());
+  const lastPinchDist = useRef<number | null>(null);
+  const lastMidpoint = useRef<{ x: number; y: number } | null>(null);
+  const isDragging = useRef(false);
+  const lastDragPos = useRef<{ x: number; y: number } | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const clampTranslate = useCallback((tx: number, ty: number, s: number) => {
+    if (!containerRef.current) return { x: tx, y: ty };
+    const rect = containerRef.current.getBoundingClientRect();
+    const maxX = (rect.width * (s - 1)) / 2;
+    const maxY = (rect.height * (s - 1)) / 2;
+    return {
+      x: Math.min(maxX, Math.max(-maxX, tx)),
+      y: Math.min(maxY, Math.max(-maxY, ty)),
+    };
+  }, []);
+
+  const getDistance = (a: PointerEvent, b: PointerEvent) => {
+    const dx = a.clientX - b.clientX;
+    const dy = a.clientY - b.clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  };
+
+  const getMidpoint = (a: PointerEvent, b: PointerEvent) => ({
+    x: (a.clientX + b.clientX) / 2,
+    y: (a.clientY + b.clientY) / 2,
+  });
+
+  const onPointerDown = useCallback((e: React.PointerEvent) => {
+    e.currentTarget.setPointerCapture(e.pointerId);
+    pointers.current.set(e.pointerId, e.nativeEvent);
+
+    if (pointers.current.size === 1) {
+      isDragging.current = true;
+      lastDragPos.current = { x: e.clientX, y: e.clientY };
+    }
+  }, []);
+
+  const onPointerMove = useCallback(
+    (e: React.PointerEvent) => {
+      pointers.current.set(e.pointerId, e.nativeEvent);
+      const pts = Array.from(pointers.current.values());
+
+      if (pts.length === 2) {
+        // ── Pinch zoom ──
+        isDragging.current = false;
+        const dist = getDistance(pts[0], pts[1]);
+        const mid = getMidpoint(pts[0], pts[1]);
+
+        if (lastPinchDist.current !== null && lastMidpoint.current !== null) {
+          const ratio = dist / lastPinchDist.current;
+          const dmx = mid.x - lastMidpoint.current.x;
+          const dmy = mid.y - lastMidpoint.current.y;
+
+          setScale((prev) => {
+            const next = Math.min(Math.max(prev * ratio, 1), 5);
+            return next;
+          });
+
+          setTranslate((prev) => {
+            const raw = { x: prev.x + dmx, y: prev.y + dmy };
+            return clampTranslate(raw.x, raw.y, scale);
+          });
+        }
+
+        lastPinchDist.current = dist;
+        lastMidpoint.current = mid;
+      } else if (pts.length === 1 && isDragging.current && scale > 1) {
+        // ── Pan when zoomed ──
+        if (lastDragPos.current) {
+          const dx = e.clientX - lastDragPos.current.x;
+          const dy = e.clientY - lastDragPos.current.y;
+          setTranslate((prev) => {
+            const raw = { x: prev.x + dx, y: prev.y + dy };
+            return clampTranslate(raw.x, raw.y, scale);
+          });
+        }
+        lastDragPos.current = { x: e.clientX, y: e.clientY };
+      }
+    },
+    [scale, clampTranslate],
+  );
+
+  const onPointerUp = useCallback((e: React.PointerEvent) => {
+    pointers.current.delete(e.pointerId);
+
+    if (pointers.current.size < 2) {
+      lastPinchDist.current = null;
+      lastMidpoint.current = null;
+    }
+    if (pointers.current.size === 0) {
+      isDragging.current = false;
+      lastDragPos.current = null;
+
+      // Snap back if scale returned to ~1
+      setScale((prev) => {
+        if (prev < 1.05) {
+          setTranslate({ x: 0, y: 0 });
+          return 1;
+        }
+        return prev;
+      });
+    }
+  }, []);
+
+  const onDoubleClick = useCallback(() => {
+    setScale((prev) => {
+      if (prev > 1) {
+        setTranslate({ x: 0, y: 0 });
+        return 1;
+      }
+      return 2.5;
+    });
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="flex justify-center overflow-hidden"
+      style={{ touchAction: scale > 1 ? "none" : "pan-y" }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+    >
+      <img
+        src={src}
+        alt=""
+        onDoubleClick={onDoubleClick}
+        draggable={false}
+        style={{
+          width: "100%",
+          height: "auto",
+          maxWidth: "clamp(300px, 85vw, 1400px)",
+          maxHeight: "clamp(400px, 80vh, 1200px)",
+          objectFit: "contain",
+          borderRadius: "8px",
+          transform: `scale(${scale}) translate(${translate.x / scale}px, ${translate.y / scale}px)`,
+          transition:
+            pointers.current.size > 0 ? "none" : "transform 0.25s ease",
+          userSelect: "none",
+          cursor: scale > 1 ? "grab" : "zoom-in",
+        }}
+      />
+    </div>
+  );
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
 export default function WorkGallerySection({
   handleLogoTap,
 }: WorkGallerySectionProps) {
-  // Auto-load each folder
-
   const artisanEscapeMods = import.meta.glob(
     "/public/images/gallery/artisan/*.{jpg,jpeg,png,webp,gif}",
     { eager: true },
@@ -97,7 +248,6 @@ export default function WorkGallerySection({
         label: "Manicure",
         images: toGalleryItems(manicureMods),
       },
-
       { id: "art", label: "Nail Arts", images: toGalleryItems(artMods) },
       {
         id: "little",
@@ -120,7 +270,6 @@ export default function WorkGallerySection({
         label: "Complimentary Beverages",
         images: toGalleryItems(drinksMods),
       },
-
       { id: "menus", label: "Menu", images: toGalleryItems(menuMods) },
     ],
     [],
@@ -135,14 +284,14 @@ export default function WorkGallerySection({
         Our Work Gallery
       </h2>
       <p className="text-secondary/80 mb-6 text-center max-w-2xl text-secondary">
-        Browse by category. Click any image to view it larger!
+        Browse by category. Pinch to zoom · Double-tap to reset · Click for
+        fullscreen!
       </p>
 
       {/* Category buttons */}
       <div className="w-full max-w-4xl mb-6 flex flex-wrap justify-center gap-3 sm:gap-4">
         {categories.map((cat) => {
           const isActive = cat.id === activeId;
-
           return (
             <div
               key={cat.id}
@@ -160,8 +309,8 @@ export default function WorkGallerySection({
                   "block px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-250",
                   "hover:scale-[1.03] active:scale-[0.97]",
                   isActive
-                    ? "bg-background text-primary" // cream bg, blush text = "selected"
-                    : "bg-primary text-primary-foreground hover:bg-primary-hover", // solid blush = default
+                    ? "bg-background text-primary"
+                    : "bg-primary text-primary-foreground hover:bg-primary-hover",
                 ].join(" ")}
                 aria-pressed={isActive}
               >
@@ -182,23 +331,7 @@ export default function WorkGallerySection({
             showPlayButton={false}
             showFullscreenButton={true}
             thumbnailPosition="bottom"
-            renderItem={(item) => (
-              <div className="flex justify-center">
-                <img
-                  src={item.original}
-                  alt=""
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    color: "red",
-                    maxWidth: "clamp(300px, 85vw, 1400px)",
-                    maxHeight: "clamp(400px, 80vh, 1200px)",
-                    objectFit: "contain",
-                    borderRadius: "8px",
-                  }}
-                />
-              </div>
-            )}
+            renderItem={(item) => <ZoomableImage src={item.original} />}
           />
         ) : (
           <div className="w-full rounded-xl border border-border p-10 text-center text-secondary/80 text-secondary">
