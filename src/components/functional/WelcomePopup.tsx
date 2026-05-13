@@ -79,26 +79,6 @@ export default function WelcomePopup() {
           })}
         </div>
 
-        {/* Arrows */}
-        {images.length > 1 && (
-          <>
-            <button
-              onClick={prev}
-              className="absolute left-0 -translate-x-8 w-10 h-10 rounded-full bg-accent-foreground/80 hover:bg-secondary/80 transition-colors text-secondary flex items-center justify-center shadow-md text-lg z-10"
-              aria-label="Previous"
-            >
-              ‹
-            </button>
-            <button
-              onClick={next}
-              className="absolute right-0 translate-x-8 w-10 h-10 rounded-full bg-accent-foreground/80 hover:bg-secondary/80 transition-colors text-secondary flex items-center justify-center shadow-md text-lg z-10"
-              aria-label="Next"
-            >
-              ›
-            </button>
-          </>
-        )}
-
         {/* Dots */}
         {images.length > 1 && (
           <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
