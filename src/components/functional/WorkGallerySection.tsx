@@ -29,6 +29,11 @@ export default function WorkGallerySection({
   handleLogoTap,
 }: WorkGallerySectionProps) {
   // Auto-load each folder
+
+  const artisanEscapeMods = import.meta.glob(
+    "/public/images/gallery/artisan/*.{jpg,jpeg,png,webp,gif}",
+    { eager: true },
+  );
   const manicureMods = import.meta.glob(
     "/public/images/gallery/manicure/*.{jpg,jpeg,png,webp,gif}",
     { eager: true },
@@ -76,6 +81,11 @@ export default function WorkGallerySection({
         id: "special",
         label: "Special of the month",
         images: toGalleryItems(specialMods),
+      },
+      {
+        id: "artisan",
+        label: "Artisan escape",
+        images: toGalleryItems(artisanEscapeMods),
       },
       {
         id: "pedicure",
