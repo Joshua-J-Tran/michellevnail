@@ -228,11 +228,11 @@ export default function WorkGallerySection({
 
   const categories = useMemo(
     () => [
-      {
-        id: "special",
-        label: "Special of the month",
-        images: toGalleryItems(specialMods),
-      },
+      // {
+      //   id: "special",
+      //   label: "Special of the month",
+      //   images: toGalleryItems(specialMods),
+      // },
       {
         id: "artisan",
         label: "Artisan escape",
