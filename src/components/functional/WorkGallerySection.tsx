@@ -197,10 +197,10 @@ export default function WorkGallerySection({
     "/public/images/gallery/pedicure/*.{jpg,jpeg,png,webp,gif}",
     { eager: true },
   );
-  const specialMods = import.meta.glob(
-    "/public/images/gallery/special/*.{jpg,jpeg,png,webp}",
-    { eager: true },
-  );
+  // const specialMods = import.meta.glob(
+  //   "/public/images/gallery/special/*.{jpg,jpeg,png,webp}",
+  //   { eager: true },
+  // );
   const lashMods = import.meta.glob(
     "/public/images/gallery/lash/*.{jpg,jpeg,png,webp}",
     { eager: true },
