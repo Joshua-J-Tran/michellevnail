@@ -21,6 +21,25 @@
     <title>Michelle V Nail</title>
   </head>
   <body>
+    <script>
+      document.addEventListener(
+        "click",
+        function (e) {
+          if (
+            e.target.closest(
+              '[href="https://michellevnails8634.simplepos.us/"]',
+            )
+          ) {
+            gtag("event", "conversion", {
+              send_to: "AW-18066957915/SJJSCMuW1-0cENvM_6ZD",
+            });
+          }
+        },
+        {
+          capture: true,
+        },
+      );
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
