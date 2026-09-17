@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
 const images = Object.keys(
-  import.meta.glob("/public/Popup/*.(png|jpg|jpeg|webp|gif)", { eager: false }),
+  import.meta.glob("/public/Popup/*.(png|jpg|JPG|jpeg|webp|gif)", {
+    eager: false,
+  }),
 ).map((path) => path.replace("/public", ""));
 
 export default function WelcomePopup() {

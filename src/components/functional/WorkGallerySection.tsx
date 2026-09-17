@@ -7,18 +7,31 @@ type WorkGallerySectionProps = {
   handleLogoTap?: () => void;
 };
 
-function toGalleryItems(modules: GlobModules) {
+type GalleryItem = {
+  original: string;
+  thumbnail: string;
+  isVideo: boolean;
+};
+
+function toGalleryItems(modules: GlobModules): GalleryItem[] {
   return Object.keys(modules)
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
     .map((path) => {
-      let url = path
-        .replace(/^\./, "")
-        .replace(/^\/public/, "")
-        .replace(/^\/src/, "");
+      const mod = modules[path] as { default: string } | string;
+      const url =
+        typeof mod === "object" && mod !== null && "default" in mod
+          ? mod.default
+          : String(mod);
 
-      if (!url.startsWith("/")) url = "/" + url;
+      const isVideo = /\.(mov|mp4)$/i.test(path);
 
-      return { original: url, thumbnail: url };
+      return {
+        original: url,
+        thumbnail: isVideo
+          ? "https://img.icons8.com/?size=100&id=85165&format=png&color=FFFFFF"
+          : url,
+        isVideo,
+      };
     });
 }
 
@@ -182,61 +195,71 @@ export default function WorkGallerySection({
   handleLogoTap,
 }: WorkGallerySectionProps) {
   const artisanEscapeMods = import.meta.glob(
-    "/public/images/gallery/artisan/*.{jpg,jpeg,png,webp,gif}",
+    "/src/images/gallery/artisan/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
     { eager: true },
   );
   const manicureMods = import.meta.glob(
-    "/public/images/gallery/manicure/*.{jpg,jpeg,png,webp,gif}",
+    "/src/images/gallery/manicure/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
     { eager: true },
   );
   const interiorMods = import.meta.glob(
-    "/public/images/gallery/interior/*.{jpg,jpeg,png,webp}",
+    "/src/images/gallery/interior/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
     { eager: true },
   );
   const pedicureMods = import.meta.glob(
-    "/public/images/gallery/pedicure/*.{jpg,jpeg,png,webp,gif}",
+    "/src/images/gallery/pedicure/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
     { eager: true },
   );
-  // const specialMods = import.meta.glob(
-  //   "/public/images/gallery/special/*.{jpg,jpeg,png,webp}",
-  //   { eager: true },
-  // );
+  const specialMods = import.meta.glob(
+    "/src/images/gallery/special/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
+    { eager: true },
+  );
   const lashMods = import.meta.glob(
-    "/public/images/gallery/lash/*.{jpg,jpeg,png,webp}",
+    "/src/images/gallery/lash/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
     { eager: true },
   );
   const drinksMods = import.meta.glob(
-    "/public/images/gallery/drinks/*.{jpg,jpeg,png,webp}",
+    "/src/images/gallery/drinks/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
     { eager: true },
   );
   const menuMods = import.meta.glob(
-    "/public/images/gallery/menu/*.{jpg,jpeg,png,webp}",
+    "/src/images/gallery/menu/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
     { eager: true },
   );
   const artMods = import.meta.glob(
-    "/public/images/gallery/art/*.{jpg,jpeg,png,webp}",
+    "/src/images/gallery/art/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
     { eager: true },
   );
   const customerMods = import.meta.glob(
-    "/public/images/gallery/customer/*.{jpg,jpeg,png,webp}",
+    "/src/images/gallery/customer/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
     { eager: true },
   );
   const littleMods = import.meta.glob(
-    "/public/images/gallery/little/*.{jpg,jpeg,png,webp}",
+    "/src/images/gallery/little/*.{jpg,JPG,jpeg,JPEG,png,PNG,webp,WEBP,gif,GIF,mov,MOV,mp4,MP4}",
     { eager: true },
   );
 
   const categories = useMemo(
     () => [
-      // {
-      //   id: "special",
-      //   label: "Special of the month",
-      //   images: toGalleryItems(specialMods),
-      // },
+      {
+        id: "special",
+        label: "Loyalty Program",
+        images: toGalleryItems(specialMods),
+      },
       {
         id: "artisan",
-        label: "Artisan escape",
+        label: "Artisan Escape",
         images: toGalleryItems(artisanEscapeMods),
+      },
+      {
+        id: "art",
+        label: "Nail Art",
+        images: toGalleryItems(artMods),
+      },
+      {
+        id: "manicure",
+        label: "Manicure",
+        images: toGalleryItems(manicureMods),
       },
       {
         id: "pedicure",
@@ -244,37 +267,50 @@ export default function WorkGallerySection({
         images: toGalleryItems(pedicureMods),
       },
       {
-        id: "manicure",
-        label: "Manicure",
-        images: toGalleryItems(manicureMods),
+        id: "lash",
+        label: "Lash & Beauty",
+        images: toGalleryItems(lashMods),
       },
-      { id: "art", label: "Nail Arts", images: toGalleryItems(artMods) },
-      {
-        id: "little",
-        label: "Little Princess",
-        images: toGalleryItems(littleMods),
-      },
-      { id: "lash", label: "Lash & Beauty", images: toGalleryItems(lashMods) },
       {
         id: "interior",
-        label: "Interior",
+        label: "Ambiance & Atmosphere",
         images: toGalleryItems(interiorMods),
       },
       {
+        id: "hospitality",
+        label: "Hospitality & Pampering",
+        images: toGalleryItems(drinksMods), // mapped to drinks/beverages modules
+      },
+      {
+        id: "little",
+        label: "Kids - Family Options",
+        images: toGalleryItems(littleMods),
+      },
+      {
         id: "customer",
-        label: "Customer Experiences",
+        label: "Customer Experience",
         images: toGalleryItems(customerMods),
       },
       {
-        id: "drinks",
-        label: "Complimentary Beverages",
-        images: toGalleryItems(drinksMods),
+        id: "menus",
+        label: "Menu",
+        images: toGalleryItems(menuMods),
       },
-      { id: "menus", label: "Menu", images: toGalleryItems(menuMods) },
     ],
-    [],
+    [
+      specialMods,
+      artisanEscapeMods,
+      artMods,
+      manicureMods,
+      pedicureMods,
+      lashMods,
+      interiorMods,
+      drinksMods,
+      littleMods,
+      customerMods,
+      menuMods,
+    ],
   );
-
   const [activeId, setActiveId] = useState(categories[0].id);
   const active = categories.find((c) => c.id === activeId) ?? categories[0];
 
@@ -331,7 +367,25 @@ export default function WorkGallerySection({
             showPlayButton={false}
             showFullscreenButton={true}
             thumbnailPosition="bottom"
-            renderItem={(item) => <ZoomableImage src={item.original} />}
+            onClick={(e) => e.stopPropagation()}
+            renderItem={(item) => {
+              const galleryItem = item as GalleryItem;
+
+              if (galleryItem.isVideo) {
+                return (
+                  <div className="flex justify-center items-center w-full max-h-[80vh]">
+                    <video
+                      src={galleryItem.original}
+                      controls
+                      playsInline
+                      className="max-w-full max-h-[80vh] rounded-lg object-contain"
+                    />
+                  </div>
+                );
+              }
+
+              return <ZoomableImage src={galleryItem.original} />;
+            }}
           />
         ) : (
           <div className="w-full rounded-xl border border-border p-10 text-center text-secondary/80 text-secondary">
