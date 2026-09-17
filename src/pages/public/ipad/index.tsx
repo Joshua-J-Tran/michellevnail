@@ -2,60 +2,16 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
 import "react-image-gallery/styles/css/image-gallery.css";
-// import ImageGallery from "react-image-gallery";
-import WorkGallerySection from "@/components/functional/WorkGallerySection";
-// import { getGalleryImages } from "@/components/functional/pullimage";
 import SocialLinks from "@/components/functional/socials";
 import ServiceList from "@/components/functional/service-list";
-import TestimonialCarousel from "@/components/functional/TestimonialCarousel";
 import WelcomePopup from "@/components/functional/WelcomePopup";
-import { useEffect, useState } from "react";
 
 function IpadPage() {
-  // const images = getGalleryImages();
-
-  const [_tapCount, setTapCount] = useState(0);
-
-  useEffect(() => {
-    const secret = ["l", "m", "a", "e"];
-    let buffer: string[] = [];
-
-    const handler = (e: KeyboardEvent) => {
-      buffer.push(e.key.toLowerCase());
-      buffer = buffer.slice(-secret.length); // keep last few keys
-    };
-
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, []);
-
-  // at top of component
-
-  const [lastTap, setLastTap] = useState<number>(0);
-
-  // tap logo 5x = ON, 10x = OFF, with a 1.5s reset window
-  const handleLogoTap = () => {
-    const now = Date.now();
-
-    setTapCount((prev) => {
-      const withinWindow = now - lastTap <= 1500; // 1.5s between taps counts toward the sequence
-      const count = withinWindow ? prev + 1 : 1; // reset if too slow
-      setLastTap(now);
-
-      // keep counting, but avoid runaway growth
-      return count > 10 ? 1 : count;
-    });
-  };
-
   return (
     <>
       <WelcomePopup />
       <div className="flex flex-col min-h-screen bg-background text-foreground">
-        
-
         {ServiceList()}
-
-
 
         {/* Footer */}
         <div className="py-12 px-4 sm:px-8 mt-10">
