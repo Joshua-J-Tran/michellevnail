@@ -3,6 +3,7 @@ import "./index.css";
 import HomePage from "./pages/public/home";
 
 import { Toaster } from "react-hot-toast";
+import IpadPage from "./pages/public/ipad";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           {/* Placeholder route to replace later */}
-          <Route path="/ipad" element={<HomePage />} />
+          <Route path="/ipad" element={<IpadPage />} />
         </Routes>
       </BrowserRouter>
     </div>
