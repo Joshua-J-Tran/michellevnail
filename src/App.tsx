@@ -1,9 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import HomePage from "./pages/public/home";
 
 import { Toaster } from "react-hot-toast";
-
 
 function App() {
   return (
