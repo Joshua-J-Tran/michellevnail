@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
 import "react-image-gallery/styles/css/image-gallery.css";
-import SocialLinks from "@/components/functional/socials";
+import IpadSocialLinks from "@/components/functional/ipadSocial";
 import ServiceList from "@/components/functional/service-list";
 import WelcomePopup from "@/components/functional/WelcomePopup";
 
@@ -38,7 +38,7 @@ function IpadPage() {
             {/* Social Media */}
             <div className="flex flex-col items-center text-center">
               <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-              {SocialLinks()}
+              {IpadSocialLinks()}
               <Button
                 variant="outline"
                 className="bg-primary text-secondary font-semibold hover:bg-primary-hover border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] mt-6 transition-all"
