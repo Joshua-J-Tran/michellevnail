@@ -89,12 +89,6 @@ export const services = [
       { name: "Shellac polish change gel", price: "$28" },
       { name: "Polish color change feet | Gel polish", price: "$12" },
       { name: "Hot stone | Hot Spray Steamer | Paraffin wax", price: "$10" },
-    ],
-  },
-  {
-    name: "Signature Waterless Pedicure",
-    image: "/images/waterless-pedicure.jpg",
-    options: [
       {
         name: "Luxe Dry Pedicure",
         price: "$50",
