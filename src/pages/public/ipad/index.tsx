@@ -155,7 +155,7 @@ function IpadPage() {
 
         {/* Footer */}
         <div className="py-12 px-4 sm:px-8 mt-10">
-          <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* Contact Info */}
             <div className="flex flex-col items-center text-center">
               <h3 className="text-xl font-bold mb-4">Contact Us</h3>
@@ -164,15 +164,6 @@ function IpadPage() {
               <p>Call: (281) 242-1015</p>
               <p>Text: (281) 242-1015</p>
               <p>Email: michellevnails@gmail.com</p>
-            </div>
-
-            {/* Operating Hours */}
-            <div className="flex flex-col items-center text-center">
-              <h3 className="text-xl font-bold mb-4">Operating Hours</h3>
-              <ul>
-                <li>Mon – Sat: 9:00 AM – 7:00 PM</li>
-                <li>Sun: 10:00 AM – 6:00 PM</li>
-              </ul>
             </div>
 
             {/* Social Media */}
