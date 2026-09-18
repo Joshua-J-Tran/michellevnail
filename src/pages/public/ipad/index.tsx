@@ -5,12 +5,152 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import IpadSocialLinks from "@/components/functional/ipadSocial";
 import ServiceList from "@/components/functional/service-list";
 import WelcomePopup from "@/components/functional/WelcomePopup";
+import WorkGallerySection from "@/components/functional/WorkGallerySection";
+import { useEffect, useState } from "react";
+import TestimonialCarousel from "@/components/functional/TestimonialCarousel";
 
 function IpadPage() {
+  // const images = getGalleryImages();
+
+  const [_tapCount, setTapCount] = useState(0);
+
+  useEffect(() => {
+    const secret = ["l", "m", "a", "e"];
+    let buffer: string[] = [];
+
+    const handler = (e: KeyboardEvent) => {
+      buffer.push(e.key.toLowerCase());
+      buffer = buffer.slice(-secret.length); // keep last few keys
+    };
+
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
+  // at top of component
+
+  const [lastTap, setLastTap] = useState<number>(0);
+
+  // tap logo 5x = ON, 10x = OFF, with a 1.5s reset window
+  const handleLogoTap = () => {
+    const now = Date.now();
+
+    setTapCount((prev) => {
+      const withinWindow = now - lastTap <= 1500; // 1.5s between taps counts toward the sequence
+      const count = withinWindow ? prev + 1 : 1; // reset if too slow
+      setLastTap(now);
+
+      // keep counting, but avoid runaway growth
+      return count > 10 ? 1 : count;
+    });
+  };
   return (
     <>
       <WelcomePopup />
+
       <div className="flex flex-col min-h-screen bg-background text-foreground">
+        {/* Navbar */}
+        <div className="flex flex-col sm:flex-row justify-between items-center moontime-header px-6 sm:px-10 lg:px-20 py-6 gap-4 sm:gap-0">
+          {/* Left group: logo + title together */}
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+            <img
+              src="/images/logo-a.png"
+              alt="Salon Logo"
+              className="h-24 sm:h-10 mx-1 sm:mx-2 rounded-full"
+            />
+            <h1 className="hidden sm:flex text-3xl font-bold text-center sm:text-left text-secondary">
+              Nails & Spa Experience
+            </h1>
+            <p className="block sm:hidden mt-0 text-lg font-bold text-secondary tracking-wide">
+              Nails & Spa Experience
+            </p>
+          </div>
+
+          {/* Right: Book Now button */}
+          <Button
+            variant="outline"
+            className="hidden sm:flex bg-primary text-secondary font-semibold hover:bg-primary-hover border-none shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all"
+          >
+            <Link to="https://michellevnails8634.simplepos.us/">Book Now!</Link>
+          </Button>
+          <Button className="block sm:hidden w-max mx-auto lg:mx-0 mt-0 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
+            <Link to="https://michellevnails8634.simplepos.us/">
+              Start Booking Today!
+            </Link>
+          </Button>
+        </div>
+
+        {/* Hero wrapper */}
+        <div className="flex flex-row items-stretch max-h-[50vh]">
+          {/* Left - legend background */}
+          <div className="legend w-full min-w-0 sm:flex-1 px-4 sm:px-6 lg:px-20 py-10 sm:min-h-[30vh] lg:min-h-[40vh] flex items-center justify-center sm:justify-start">
+            <div className="flex flex-col gap-3 text-center lg:text-left">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary drop-shadow-md">
+                <span className="block">Welcome to</span>{" "}
+                <span className="block sm:mt-2">
+                  <strong className="text-secondary">MICHELLE V NAILS</strong>
+                </span>
+              </h1>
+
+              <Button className="hidden sm:flex w-max mx-auto lg:mx-0 mt-2 text-secondary bg-primary hover:bg-primary-hover transition-colors font-bold">
+                <Link to="https://michellevnails8634.simplepos.us/">
+                  Start Booking Today!
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Updated image Gallery Section */}
+        <WorkGallerySection handleLogoTap={handleLogoTap} />
+
+        {/* Curvy Stylish Divider with Logo */}
+        <div className="flex items-center mt-4 w-full max-w-[1400px] mx-auto px-4 sm:px-0">
+          <svg
+            className="flex-1 h-12"
+            viewBox="0 0 200 40"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="gradientLeft">
+                <stop offset="0%" stopColor="var(--primary)" />
+                <stop offset="100%" stopColor="var(--background)" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0 20 Q50 0 100 20 T200 20"
+              fill="none"
+              stroke="url(#gradientLeft)"
+              strokeWidth="4"
+            />
+          </svg>
+
+          <img
+            src="/images/logo-a.png"
+            alt="Salon Logo"
+            className="h-30 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
+          />
+
+          <svg
+            className="flex-1 h-12"
+            viewBox="0 0 200 40"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="gradientRight">
+                <stop offset="0%" stopColor="var(--background)" />
+                <stop offset="100%" stopColor="var(--primary)" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0 20 Q50 40 100 20 T200 20"
+              fill="none"
+              stroke="url(#gradientRight)"
+              strokeWidth="4"
+            />
+          </svg>
+        </div>
+
         {ServiceList()}
 
         {/* Footer */}
@@ -54,6 +194,64 @@ function IpadPage() {
           <div className="mt-8 text-center text-gray-400 text-sm">
             © {new Date().getFullYear()} Michelle V Nails. All rights reserved.
           </div>
+        </div>
+
+        {/* Curvy Stylish Divider with Logo */}
+        <div className="flex items-center mt-4 w-full max-w-[1400px] mx-auto px-4 sm:px-0">
+          <svg
+            className="flex-1 h-12"
+            viewBox="0 0 200 40"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="gradientLeft">
+                <stop offset="0%" stopColor="var(--primary)" />
+                <stop offset="100%" stopColor="var(--background)" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0 20 Q50 0 100 20 T200 20"
+              fill="none"
+              stroke="url(#gradientLeft)"
+              strokeWidth="4"
+            />
+          </svg>
+
+          <img
+            src="/images/logo-a.png"
+            alt="Salon Logo"
+            className="h-30 sm:h-40 mx-4 sm:mx-8 rounded-full shadow-lg"
+          />
+
+          <svg
+            className="flex-1 h-12"
+            viewBox="0 0 200 40"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="gradientRight">
+                <stop offset="0%" stopColor="var(--background)" />
+                <stop offset="100%" stopColor="var(--primary)" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0 20 Q50 40 100 20 T200 20"
+              fill="none"
+              stroke="url(#gradientRight)"
+              strokeWidth="4"
+            />
+          </svg>
+        </div>
+
+        {/* What People Say Section */}
+        <div className="p-6 sm:p-10 flex flex-col items-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center text-secondary">
+            Nails & Spa Experience
+          </h2>
+          <p className="text-xl sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-center font-semibold text-secondary">
+            Here is what our customers say about us.
+          </p>
+          {<TestimonialCarousel />}
         </div>
       </div>
     </>
