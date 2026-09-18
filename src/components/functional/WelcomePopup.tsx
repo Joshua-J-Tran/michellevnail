@@ -38,45 +38,60 @@ export default function WelcomePopup() {
       onClick={() => setVisible(false)}
     >
       <div
-        className="relative flex items-center justify-center"
+        className="relative flex flex-col items-center justify-center"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Image strip */}
+        {/* Main Image Container */}
         <div
           className="relative flex items-center justify-center w-[70vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] h-[80vh]"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Close - anchored to top-right of image container */}
+          {/* Close Button */}
           <button
             onClick={() => setVisible(false)}
-            className="absolute top-0 right-0 w-8 h-8 rounded-full bg-accent-foreground/80 hover:bg-secondary/80 transition-colors text-secondary hover:text-gray-900 flex items-center justify-center shadow-md z-20"
+            className="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 transition-colors text-white flex items-center justify-center shadow-md z-30"
             aria-label="Close"
           >
             ✕
           </button>
+
           {images.map((src, i) => {
-            const offset = i - current;
+            // Calculate wrapped offset for circular navigation
+            let offset = i - current;
+            if (offset < -1 && current === images.length - 1 && i === 0) {
+              offset = 1;
+            } else if (offset > 1 && current === 0 && i === images.length - 1) {
+              offset = -1;
+            }
+
             if (Math.abs(offset) > 1) return null;
 
             const isCurrent = offset === 0;
 
             return (
-              <img
+              <div
                 key={src}
-                src={src}
-                alt={`Popup ${i + 1}`}
                 onClick={() => !isCurrent && setCurrent(i)}
                 className={`
-          object-contain rounded-2xl border-3 transition-all duration-300 absolute
-          ${
-            isCurrent
-              ? "w-full max-h-[80vh] border-primary/80 opacity-100 blur-0 cursor-default z-10"
-              : `w-[25vw] sm:w-[18vw] md:w-[14vw] max-h-[50vh] border-primary/30 opacity-50 blur-sm cursor-pointer scale-90 z-0
-               ${offset === -1 ? "right-full mr-0" : "left-full ml-0"}`
-          }
-        `}
-              />
+                  absolute transition-all duration-300 flex items-center justify-center
+                  ${
+                    isCurrent
+                      ? "opacity-100 blur-0 cursor-default z-10 max-h-[80vh] max-w-full"
+                      : `opacity-50 blur-sm cursor-pointer scale-90 z-0 max-h-[50vh]
+                         ${offset === -1 ? "-translate-x-[60%]" : "translate-x-[60%]"}`
+                  }
+                `}
+              >
+                <img
+                  src={src}
+                  alt={`Popup ${i + 1}`}
+                  className={`
+                    block object-contain rounded-2xl border-4 transition-all duration-300 max-h-[75vh] max-w-[70vw] sm:max-w-[50vw] md:max-w-[40vw] lg:max-w-[30vw] w-auto h-auto
+                    ${isCurrent ? "border-primary/80" : "border-primary/30"}
+                  `}
+                />
+              </div>
             );
           })}
         </div>
@@ -88,7 +103,9 @@ export default function WelcomePopup() {
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`w-2 h-2 rounded-full transition-colors ${i === current ? "bg-primary" : "bg-white/60"}`}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  i === current ? "bg-primary" : "bg-white/60"
+                }`}
               />
             ))}
           </div>
